@@ -1,3 +1,4 @@
+import { MatRadioModule } from '@angular/material/radio';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -40,7 +41,8 @@ import { Component } from '@angular/core';
   imports: [
     BrowserModule,
     AppRoutingModule, 
-    MatCardModule
+    MatCardModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
