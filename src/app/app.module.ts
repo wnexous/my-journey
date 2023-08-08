@@ -14,6 +14,7 @@ import { LoginFormComponent } from './widgets/login-form/login-form.component';
 import { InputTextComponent } from './components/input-text/input-text.component';
 import { InputPasswordComponent } from './components/input-password/input-password.component';
 import { InputDateComponent } from './components/input-date/input-date.component';
+import { SignupComponent } from './pages/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { InputDateComponent } from './components/input-date/input-date.component
     LoginFormComponent,
     InputTextComponent,
     InputPasswordComponent,
-    InputDateComponent
+    InputDateComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
