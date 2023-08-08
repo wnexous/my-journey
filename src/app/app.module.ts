@@ -1,3 +1,4 @@
+import { MatRadioModule } from '@angular/material/radio';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -28,8 +29,9 @@ import { InputDateComponent } from './components/input-date/input-date.component
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule, 
     MatCardModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
