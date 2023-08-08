@@ -1,15 +1,17 @@
-// import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SigninComponent } from './signin/signin.component';
+import { IndexComponent } from './index/index.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MatMenuModule} from '@angular/material/menu';
-import {MatButtonModule} from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 
-import {MatCardModule} from '@angular/material/card';
-import {Component} from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
+import { Component } from '@angular/core';
 
 // @NgModule({
 //   declarations: [
@@ -29,10 +31,18 @@ import {Component} from '@angular/core';
 //   bootstrap: [AppComponent]
 // })
 
-@Component({
-  selector: 'card-overview-example',
-  templateUrl: 'index.html',
-  standalone: true,
-  imports: [MatCardModule],
+@NgModule({
+  declarations: [
+    AppComponent,
+    SigninComponent,
+    IndexComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule, 
+    MatCardModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class CardOverviewExample {}
+export class CardOverviewExample { }
