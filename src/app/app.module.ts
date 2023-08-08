@@ -45,4 +45,4 @@ import { Component } from '@angular/core';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class CardOverviewExample { }
+export class AppModule { }
