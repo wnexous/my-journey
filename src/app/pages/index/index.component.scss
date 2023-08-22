@@ -4,5 +4,29 @@
 }
 
 .logo {
-    
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+#my-journey {
+    font-family: "IBM-Plex-Mono-regular";
+    font-size: 96px;
+    color: #201824;
+    line-height: 100%;
+}
+
+.text-logo {
+    border: 1px solid orange;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+#conecte {
+    font-family: "IBM-Plex-Mono-light";
+    display: flex;
+    flex-direction: row-reverse;
+    color: #A576BC;
+    font-size: 24px;
 }
