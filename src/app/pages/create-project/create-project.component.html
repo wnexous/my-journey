@@ -1,0 +1,51 @@
+<div class="content">
+    <span id="page-title">Cadastro de projeto</span>
+
+    <div class="project-forms">
+
+        <div class="forms-fields">
+
+            <p><strong>Cadastre seu projeto conosco e dê vida aos seus sonhos!</strong></p> 
+            <p>Faça parte de nossa comunidade de inovadores, empreendedores e criativos.</p>
+
+            <form id="form-new-project" method="post" class="example-form" (ngSubmit)="onSubmit()">
+                <span id="forms-title">Título</span>
+                <mat-form-field class="example-full-width">
+                  <input type="text" matInput [formControl]="isNotEmpty" placeholder="Ex. Noite Estrelada" required>
+                  <mat-error *ngIf="isNotEmpty.hasError('required')">
+                    Título é <strong>obrigatório</strong>
+                  </mat-error>
+                </mat-form-field>
+
+                <span id="forms-title">Descrição</span>
+                <p>
+                    <mat-form-field class="example-full-width">
+                      <textarea matInput [formControl]="isNotEmpty" placeholder="Ex. Meu projeto conta a história de..." required></textarea>
+                      <mat-error *ngIf="isNotEmpty.hasError('required')">
+                        Descrição é <strong>obrigatório</strong>
+                    </mat-error>
+                    </mat-form-field>
+                </p>
+
+                <span id="forms-title">Arquivos</span>
+                <label class="btn-up">
+                    <input type="file" hidden multiple/>
+                    Selecione seu(s) arquivo(s)
+                </label>
+
+              </form>
+        </div>
+
+
+        <div class="image-create-project">
+            <img src="./../../../assets/images/new-project-image.svg" alt="">
+        </div>
+
+    </div>
+
+    <div class="send-button">
+        <button type="submit" id="send"  form="form-new-project" value="Submit" mat-fab extended color="primary">
+            <mat-icon>cloud_upload</mat-icon>
+            Cadastrar</button>
+    </div>
+</div>
