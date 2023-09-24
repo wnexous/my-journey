@@ -20,7 +20,6 @@ import { InputTextComponent } from './components/input-text/input-text.component
 import { InputPasswordComponent } from './components/input-password/input-password.component';
 import { InputDateComponent } from './components/input-date/input-date.component';
 import { SignupComponent } from './pages/signup/signup.component';
-import { UserRegisterComponent } from './pages/user-register/user-register.component';
 
 @NgModule({
   declarations: [
@@ -33,8 +32,7 @@ import { UserRegisterComponent } from './pages/user-register/user-register.compo
     InputTextComponent,
     InputPasswordComponent,
     InputDateComponent,
-    SignupComponent,
-    UserRegisterComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
