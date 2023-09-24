@@ -1,6 +1,5 @@
 <div class="content">
-    <div class="image-texture">
-    <!-- <img class="imgBackground" src="assets/textures/figma_18_texture.png" /> -->
+    <img class="imgBackground" src="assets/textures/figma_18_texture.png" />
 
     <div class="logo">
         <img src="./../../../assets/icons/logo_small.svg" alt="">
@@ -12,16 +11,34 @@
 
     <span id="register-text">Conecte, Exponha, Prospere: os passos da sua jornada começam aqui!</span>
 
-        <div class="form">
+        <div class="form" method="post" id="form-new-project" (ngSubmit)="onSubmit()">
             <form method="post" class="form-layout">
-                <span id="forms-title">Nome</span>
+                <span id="title">Cadastro do Currículo</span>
+                <span id="forms-title">Nome Completo</span>
                 <mat-form-field class="example-full-width">
-                <input type="text" matInput [formControl]="isNotEmpty" placeholder="Ex. Noite Estrelada" required>
+                <input type="text" matInput [formControl]="isNotEmpty" placeholder="Ex. Joaquim Luís da Costa" required>
                 <mat-error *ngIf="isNotEmpty.hasError('required')">
-                    Título é <strong>obrigatório</strong>
+                    Nome Completo é <strong>obrigatório</strong>
                 </mat-error>
                 </mat-form-field>
+
+                <span id="forms-title">E-mail</span>
+                <mat-form-field class="example-full-width">
+                    <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                      Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="emailFormControl.hasError('required')">
+                      Email é <strong>obrigatório</strong>
+                    </mat-error>
+                  </mat-form-field>                  
             </form>
         </div>
+
+        <div class="send-button">
+            <button type="submit" id="send"  form="form-new-project" value="Submit" mat-fab extended color="primary">
+                <mat-icon>check_circle</mat-icon>
+                Cadastre</button>
+        </div>
+
     </div>
-</div>
