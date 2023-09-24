@@ -3,15 +3,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { IndexComponent } from './pages/index/index.component';
 
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
-
 
 import { MatCardModule } from '@angular/material/card';
 import { SigninComponent } from './pages/signin/signin.component';
@@ -28,7 +26,6 @@ import { LoadingComponent } from './components/loading/loading.component';
   declarations: [
     AppComponent,
     SigninComponent,
-    IndexComponent,
     HeaderComponent,
     FooterComponent,
     LoginFormComponent,
