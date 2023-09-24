@@ -1,3 +1,22 @@
+@keyframes loadingAnimation {
+    0% {
+        transform: rotate(10deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .loading-box {
-    
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100rem;
+    border-top: 2px solid rgb(50, 0, 74);
+
+    animation-name: loadingAnimation;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+
+
 }
