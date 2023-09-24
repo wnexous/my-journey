@@ -4,10 +4,6 @@
     position: relative;
 }
 
-// .img-texture {
-//     background-image: url("./../../../assets/textures/figma_18_texture.png")
-// }
-
 .imgBackground {
     position: fixed;
     inset: 0;
@@ -15,7 +11,6 @@
     margin: auto;
     width: 100%;
     min-height: 100%;
-    z-index: 1;
 }
 
 #name {
@@ -66,10 +61,7 @@
 }
 
 .form-layout {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 50%;
+    width: 35%;
     padding: 20px;
     border-radius: 16px;
     background: #fff;
@@ -77,9 +69,21 @@
 }
 
 #forms-title {
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 20px;
     margin-top: 40px;
+}
+
+#title {
+    font-size: 24px;
+    font-family: "IBM-Plex-Mono-bold";
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.example-full-width {
+    width: 600px;
 }
 
 span {
@@ -87,3 +91,36 @@ span {
     align-items: center;
     font-family: "IBM-Plex-Mono-light";
 }
+
+button {
+    background-color: #A576BC;
+}
+
+.send-button {
+    margin: 30px 0px 0px 0px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.example-tel-input-container {
+    display: flex;
+  }
+  
+  .example-tel-input-element {
+    border: none;
+    background: none;
+    padding: 0;
+    outline: none;
+    font: inherit;
+    text-align: center;
+  }
+  
+  .example-tel-input-spacer {
+    opacity: 0;
+    transition: opacity 200ms;
+  }
+  
+  :host.example-floating .example-tel-input-spacer {
+    opacity: 1;
+  }
