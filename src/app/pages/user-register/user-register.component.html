@@ -15,30 +15,128 @@
             <form method="post" class="form-layout">
                 <span id="title">Cadastro do Currículo</span>
                 <span id="forms-title">Nome Completo</span>
-                <mat-form-field class="example-full-width">
-                <input type="text" matInput [formControl]="isNotEmpty" placeholder="Ex. Joaquim Luís da Costa" required>
-                <mat-error *ngIf="isNotEmpty.hasError('required')">
+                <mat-form-field class="full-width-field">
+                <input type="text" matInput [formControl]="nameFormControl" placeholder="Ex. Joaquim Luís da Costa" required>
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-error *ngIf="nameFormControl.hasError('required')">
                     Nome Completo é <strong>obrigatório</strong>
                 </mat-error>
                 </mat-form-field>
 
                 <span id="forms-title">E-mail</span>
-                <mat-form-field class="example-full-width">
-                    <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+                <mat-form-field class="full-width-field">
+                    <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. joaquim.costa@gmail.com" required>
+                    <mat-icon matSuffix>email</mat-icon>
                     <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                      Please enter a valid email address
+                      Informe um e-mail válido
                     </mat-error>
                     <mat-error *ngIf="emailFormControl.hasError('required')">
                       Email é <strong>obrigatório</strong>
                     </mat-error>
-                  </mat-form-field>                  
+                  </mat-form-field>
+
+                  <table class="example-full-width" cellspacing="0"><tr>
+                    <td><span id="forms-title">Telefone</span>
+                        <mat-form-field class="example-full-width">
+                        <span matPrefix>+55 &nbsp;</span>
+                        <input type="tel" #phone matInput [formControl]="phoneFormControl" maxlength="11" matInput placeholder="41993452758" required>
+                        <mat-hint align="end">{{phone.value.length}} / 11</mat-hint>
+                        <mat-error *ngIf="phoneFormControl.hasError('required')">
+                            Telefone é <strong>obrigatório</strong>
+                        </mat-error>
+                        <mat-icon matSuffix>phone</mat-icon>
+                      </mat-form-field></td>
+                    <td><span id="forms-title">Data de Nascimento</span>
+                        <mat-form-field>
+                        <mat-label>dd/mm/aaaa</mat-label>
+                        <input matInput [matDatepicker]="picker" required>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field></td>
+                  </tr></table>
+
+                  <span id="forms-title">Endereço</span>
+                  <table class="example-full-width" cellspacing="0"><tr>
+                    <td><mat-form-field class="medium-field">
+                      <mat-label>Logradouro</mat-label>
+                      <input matInput placeholder="Ex. Rua do Fogo" required>
+                    </mat-form-field></td>
+                    <td><mat-form-field class="small-field">
+                      <mat-label>Número</mat-label>
+                      <input matInput placeholder="Ex: 63" required>
+                    </mat-form-field></td>
+                  </tr></table>
+                  <table class="example-full-width" cellspacing="0"><tr>
+                    <td><mat-form-field class="example-full-width">
+                      <mat-label>Bairro</mat-label>
+                      <input matInput placeholder="Ex. Rebouças" required>
+                    </mat-form-field></td>
+                    <td><mat-form-field class="example-full-width">
+                      <mat-label>Cidade</mat-label>
+                      <input matInput placeholder="Ex: Curitiba" required>
+                    </mat-form-field></td>
+                    <td><mat-form-field class="small-field">
+                        <mat-label>Estado</mat-label>
+                        <select matNativeControl required>
+                        <option label="Selecione"></option>
+                          <option value="1">AC</option>
+                          <option value="2">AL</option>
+                          <option value="3">AP</option>
+                          <option value="4">AM</option>
+                          <option value="5">BA</option>
+                          <option value="6">CE</option>
+                          <option value="7">DF</option>
+                          <option value="8">ES</option>
+                          <option value="9">GO</option>
+                          <option value="10">MA</option>
+                          <option value="11">MT</option>
+                          <option value="12">MS</option>
+                          <option value="13">MG</option>
+                          <option value="14">PA</option>
+                          <option value="15">PB</option>
+                          <option value="16">PR</option>
+                          <option value="17">PR</option>
+                          <option value="18">PE</option>
+                          <option value="19">PI</option>
+                          <option value="20">RJ</option>
+                          <option value="21">RN</option>
+                          <option value="22">RS</option>
+                          <option value="23">RO</option>
+                          <option value="24">RR</option>
+                          <option value="25">SC</option>
+                          <option value="26">SP</option>
+                          <option value="27">SE</option>
+                          <option value="28">TO</option>
+                        </select>
+                      </mat-form-field></td>
+                  </tr></table>
+
+                  <span id="forms-title">Objetivo Profissional</span>
+                  <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="Meu objetivo profissional é..."></textarea>
+                  </mat-form-field>
+
+                  <span id="forms-title">Minhas Experiências</span>
+                  <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="Atuei dois anos como..."></textarea>
+                  </mat-form-field>
+
+                  <span id="forms-title">Cursos e Certificados</span>
+                  <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="Particiáção em..."></textarea>
+                  </mat-form-field>
+
+                  <span id="forms-title">Idiomas</span>
+                  <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="Inglês avançado, boa escrita e leitura..."></textarea>
+                  </mat-form-field>
             </form>
         </div>
 
         <div class="send-button">
             <button type="submit" id="send"  form="form-new-project" value="Submit" mat-fab extended color="primary">
                 <mat-icon>check_circle</mat-icon>
-                Cadastre</button>
+                Concluído</button>
         </div>
 
     </div>
