@@ -1,0 +1,153 @@
+.container {
+    background: linear-gradient(269deg, #19103F 0%, #2E0D3F 47.32%, #201824 100%);
+    height: 100vh;
+    position: relative;
+
+}
+
+.imgBackground {
+    position: fixed;
+    inset: 0;
+    object-fit: cover;
+    margin: auto;
+    width: 100%;
+    min-height: 100%;
+}
+
+.content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.logo-content {
+    img {
+        mix-blend-mode: soft-light;
+    }
+}
+
+.information-container {
+    display: flex;
+    max-width: 466px;
+
+    h1 {
+        font-size: 42px;
+        color: white;
+        font-family: "IBM-Plex-Mono-Bold";
+    }
+
+    p {
+        font-family: "IBM-Plex-Mono-Medium";
+        color: #DFEEBF;
+    }
+}
+
+.form-container {
+    width: 100%;
+    max-width: 600px;
+
+    h1 {
+        font-family: "IBM-Plex-Mono-Medium";
+        color: #DFEEBF;
+        font-size: 42px;
+        margin-bottom: 42px;
+    }
+}
+
+.form-content {
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    span {
+        display: flex;
+        font-family: "IBM-Plex-Mono-Medium";
+        flex-direction: column;
+        gap: 24px;
+
+        label {
+            font-size: 24px;
+            font-family: inherit;
+            color: #F39D52;
+            font-family: "IBM-Plex-Mono-Light";
+        }
+
+        input {
+
+            outline: none;
+            min-height: 56px;
+            border-radius: 4px;
+            border: 1px solid #DFEEBF;
+            background: rgba(165, 118, 188, 0.10);
+            box-shadow: 0px 0px 120px 0px rgba(223, 238, 191, 0.10);
+
+            padding: 0 16px;
+            color: #F39D52;
+
+            &::placeholder {
+                font-family: "IBM-Plex-Mono-Medium";
+                color: rgba(243, 157, 82, 1);
+            }
+        }
+    }
+}
+
+.form-forgot-password {
+    margin: 0;
+    text-align: right;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #F39D52;
+    text-decoration: none;
+
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+}
+
+.form-button-content {
+    display: flex;
+    flex-direction: row !important;
+    gap: 12px !important;
+
+    width: 100%;
+    flex-grow: 100%;
+    flex-shrink: 100%;
+    flex-basis: 100%;
+
+    a,
+    button {
+        text-decoration: none;
+        text-align: center;
+        width: 100%;
+        font-size: 16px;
+
+        white-space: nowrap;
+        padding: 16px 0;
+        background-color: transparent;
+
+        font-family: "IBM-Plex-Mono-Medium";
+    }
+
+
+    &__create-account {
+        padding-inline: 8px !important;
+        background-color: blue;
+        border: 1px solid #F39D52;
+        color: #DFEEBF;
+    }
+
+    &__signin {
+        padding-inline: 24px;
+        background-color: #DFEEBF !important;
+        border-radius: 8px;
+        color: #F39D52;
+
+        font-weight: 700;
+    }
+}

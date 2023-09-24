@@ -120,7 +120,10 @@
     flex-shrink: 100%;
     flex-basis: 100%;
 
+    a,
     button {
+        text-decoration: none;
+        text-align: center;
         width: 100%;
         font-size: 16px;
 
