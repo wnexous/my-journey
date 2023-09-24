@@ -1,1 +1,27 @@
-<p>user-register works!</p>
+<div class="content">
+    <div class="image-texture">
+    <!-- <img class="imgBackground" src="assets/textures/figma_18_texture.png" /> -->
+
+    <div class="logo">
+        <img src="./../../../assets/icons/logo_small.svg" alt="">
+        <div class="name-logo">
+            <span id="name">MY JOURNAL</span>
+            <span id="subname">CONECTE</span>
+        </div>
+    </div>
+
+    <span id="register-text">Conecte, Exponha, Prospere: os passos da sua jornada começam aqui!</span>
+
+        <div class="form">
+            <form method="post" class="form-layout">
+                <span id="forms-title">Nome</span>
+                <mat-form-field class="example-full-width">
+                <input type="text" matInput [formControl]="isNotEmpty" placeholder="Ex. Noite Estrelada" required>
+                <mat-error *ngIf="isNotEmpty.hasError('required')">
+                    Título é <strong>obrigatório</strong>
+                </mat-error>
+                </mat-form-field>
+            </form>
+        </div>
+    </div>
+</div>
