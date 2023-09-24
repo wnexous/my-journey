@@ -18,6 +18,7 @@ import {MatButtonModule} from '@angular/material/button';
 })
 export class UserRegisterComponent {
   isNotEmpty = new FormControl('', [Validators.requiredTrue]);
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
   onSubmit() {
     
