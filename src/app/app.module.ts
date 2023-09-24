@@ -21,7 +21,6 @@ import { InputPasswordComponent } from './components/input-password/input-passwo
 import { InputDateComponent } from './components/input-date/input-date.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoadingComponent } from './components/loading/loading.component';
-import { UserRegisterComponent } from './pages/user-register/user-register.component';
 
 @NgModule({
   declarations: [
@@ -35,8 +34,7 @@ import { UserRegisterComponent } from './pages/user-register/user-register.compo
     InputPasswordComponent,
     InputDateComponent,
     SignupComponent,
-    LoadingComponent,
-    UserRegisterComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
