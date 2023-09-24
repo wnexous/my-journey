@@ -13,19 +13,80 @@
     min-height: 100%;
 }
 
+.content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
 .logo-content {
     img {
         mix-blend-mode: soft-light;
     }
-
 }
 
 .information-container {
     display: flex;
+    max-width: 466px;
 
     h1 {
-        font-size: 48px;
+        font-size: 42px;
         color: white;
         font-family: "IBM-Plex-Mono-Bold";
+    }
+
+    p {
+        font-family: "IBM-Plex-Mono-Medium";
+        color: #DFEEBF;
+    }
+}
+
+.form-container {
+    h1 {
+        font-family: "IBM-Plex-Mono-Medium";
+        color: #DFEEBF;
+        font-size: 42px;
+    }
+}
+
+.form-content {
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    span {
+        display: flex;
+        font-family: "IBM-Plex-Mono-Medium";
+        flex-direction: column;
+        gap: 24px;
+
+        label {
+            font-size: 24px;
+            font-family: inherit;
+            color: #F39D52;
+            font-family: "IBM-Plex-Mono-Light";
+        }
+
+        input {
+
+            outline: none;
+            min-height: 56px;
+            border-radius: 4px;
+            border: 1px solid #DFEEBF;
+            background: rgba(165, 118, 188, 0.10);
+            box-shadow: 0px 0px 120px 0px rgba(223, 238, 191, 0.10);
+
+            padding: 0 16px;
+            color: #F39D52;
+
+            &::placeholder {
+                font-family: "IBM-Plex-Mono-Medium";
+                color: rgba(243, 157, 82, 1);
+            }
+        }
     }
 }
