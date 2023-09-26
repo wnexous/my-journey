@@ -21,6 +21,8 @@ import { InputPasswordComponent } from './components/input-password/input-passwo
 import { InputDateComponent } from './components/input-date/input-date.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { MenuHomeIsNotLoggedComponent } from './components/menu-home-is-not-logged/menu-home-is-not-logged.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     InputPasswordComponent,
     InputDateComponent,
     SignupComponent,
-    LoadingComponent
+    LoadingComponent,    
+    MenuHomeIsNotLoggedComponent
   ],
   imports: [
     BrowserModule,
@@ -45,9 +48,11 @@ import { LoadingComponent } from './components/loading/loading.component';
     MatButtonModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
