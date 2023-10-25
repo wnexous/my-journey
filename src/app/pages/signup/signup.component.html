@@ -31,21 +31,25 @@
     <div class="form-container">
       <h1>Cadastrar</h1>
 
-      <div class="form-content">
+      <form #userPost="ngForm" class="form-content" (ngSubmit)="onSubmit(userPost.value)">
         <span>
-          <label for="name">NOME DE <b>COMPLETO</b></label>
+          <label for="name">NOME <b>COMPLETO</b></label>
           <input
             type="text"
             id="name"
+            name="name"
             placeholder="digite aqui seu nome completo"
+            ngModel
           />
         </span>
         <span>
-          <label for="username">NOME DE <b>USUÁRIO</b></label>
+          <label for="email">EMAIL DO <b>USUÁRIO</b></label>
           <input
-            type="text"
-            id="username"
-            placeholder="digite aqui seu codinome"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="digite aqui seu e-mail"
+            ngModel
           />
         </span>
         <span>
@@ -53,7 +57,9 @@
           <input
             type="password"
             id="password"
+            name="password"
             placeholder="coxinha123"
+            ngModel
           />
         </span>
         <span class="form-forgot-password">
@@ -65,9 +71,9 @@
           <a class="form-button-content__create-account" href="/signin">
             Já tenho uma conta
           </a>
-          <button class="form-button-content__signin">Criar conta</button>
+          <button type="submit" class="form-button-content__signin">Criar conta</button>
         </span>
-      </div>
+      </form>
     </div>
   </div>
 </div>
