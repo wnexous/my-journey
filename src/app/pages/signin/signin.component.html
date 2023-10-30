@@ -4,7 +4,7 @@
   <div class="content">
     <div class="information-container">
       <div class="logo-content">
-        <img src="assets/icons/logo_small.png" alt="logo" />
+        <img src="./../../../assets/icons/logo_small_purple.svg" alt="logo" />
       </div>
 
       <div>
@@ -31,13 +31,15 @@
     <div class="form-container">
       <h1>Entrar</h1>
 
-      <div class="form-content">
+      <form #loginPost="ngForm" class="form-content" (ngSubmit)="onSubmit(loginPost.value)">
         <span>
-          <label for="username">NOME DE <b>USUÁRIO</b></label>
+          <label for="email">EMAIL DO <b>USUÁRIO</b></label>
           <input
-            type="text"
-            id="username"
+            type="email"
+            id="email"
+            name="email"
             placeholder="digite aqui seu codinome"
+            ngModel
           />
         </span>
         <span>
@@ -45,7 +47,9 @@
           <input
             type="password"
             id="password"
+            name="password"
             placeholder="coxinha123"
+            ngModel
           />
         </span>
         <span>
@@ -56,9 +60,9 @@
           <a class="form-button-content__create-account" href="/signup">
             criar uma conta
           </a>
-          <button class="form-button-content__signin">Entrar</button>
+          <button type="submit" class="form-button-content__signin">Entrar</button>
         </span>
-      </div>
+      </form>
     </div>
   </div>
 </div>

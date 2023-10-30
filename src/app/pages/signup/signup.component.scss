@@ -23,6 +23,10 @@
 }
 
 .logo-content {
+    display: flex;
+    flex-direction: column;
+    padding-right: 15px;
+
     img {
         mix-blend-mode: soft-light;
     }
