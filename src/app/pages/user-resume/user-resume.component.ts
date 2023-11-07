@@ -14,6 +14,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 
 import { HttpClient } from '@angular/common/http';
+import { ResumeService } from 'src/app/service/resume.service';
 @Component({
   selector: 'user-resume',
   templateUrl: './user-resume.component.html',
@@ -26,7 +27,8 @@ export class UserResumeComponent {
 
   constructor(
     private formBuilder: FormBuilder, 
-    private http: HttpClient) {
+    private http: HttpClient,
+    private resumeService: ResumeService) {
     this.createResumeForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -51,15 +53,11 @@ export class UserResumeComponent {
       formData.birthdate = datePipe.transform(formData.birthdate, 'dd/MM/yyyy');
 
       console.log(formData)
-      this.http.post('#', formData).subscribe(
-        (response) => {
-          alert('Cadastro de currículo realizado com sucesso')
-          console.log('Requisição POST bem-sucedida', response);
-        },
-        (error) => {
-          console.error('Erro na requisição POST', error);
-        }
-      );
+      this.resumeService.createResume(formData).subscribe((resp) => {
+        alert('Formulário enviado');
+      });
+    } else {
+      console.log("Erro ao enviar");
     }
-  }
+    }
 }
