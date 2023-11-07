@@ -38,7 +38,6 @@ registerLocaleData(localePT);
     InputTextComponent,
     InputPasswordComponent,
     InputDateComponent,
-    SignupComponent,
     LoadingComponent,    
     MenuHomeIsNotLoggedComponent
   ],
@@ -52,8 +51,9 @@ registerLocaleData(localePT);
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
+    CommonModule,
     CreateProjectComponent,
-    CommonModule
+    SignupComponent
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-br' }],
   bootstrap: [AppComponent]

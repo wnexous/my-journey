@@ -27,7 +27,6 @@ export class UserResumeComponent {
 
   constructor(
     private formBuilder: FormBuilder, 
-    private http: HttpClient,
     private resumeService: ResumeService) {
     this.createResumeForm = this.formBuilder.group({
       name: ['', Validators.required],
