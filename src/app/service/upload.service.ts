@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
  
 @Injectable({
@@ -12,11 +12,13 @@ export class UploadService {
  
  public uploadFile(title: string, description: string, file: File) {
   const formData = new FormData();
-  formData.append('title', title);
-  formData.append('description', description);
   formData.append('file', file);
 
-  return this.httpClient.post('#', formData);
+  const params = new HttpParams()
+  .set('title', title)
+  .set('description', description);
+
+  return this.httpClient.post('api/project?' + params.toString, formData);
 }
 
 }
