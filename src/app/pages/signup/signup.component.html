@@ -31,37 +31,52 @@
     <div class="form-container">
       <h1>Cadastrar</h1>
 
-      <form #userPost="ngForm" class="form-content" (ngSubmit)="onSubmit(userPost.value)">
+      <form class="form-content" [formGroup]="signupForm">
         <span>
           <label for="name">NOME <b>COMPLETO</b></label>
-          <input
+        </span>
+          <mat-form-field>
+            <input
             type="text"
             id="name"
             name="name"
             placeholder="digite aqui seu nome completo"
-            ngModel
+            matInput formControlName="name"
           />
-        </span>
+          <mat-error *ngIf="signupForm.get('name')?.hasError('required')">
+            Nome completo é <strong>obrigatório</strong>
+          </mat-error>
+          </mat-form-field>
         <span>
           <label for="email">EMAIL DO <b>USUÁRIO</b></label>
+        </span>
+          <mat-form-field>
           <input
             type="email"
             id="email"
             name="email"
             placeholder="digite aqui seu e-mail"
-            ngModel
+            matInput formControlName="email" 
           />
-        </span>
+          <mat-error *ngIf="signupForm.get('email')?.hasError('required')">
+            Email é <strong>obrigatório</strong>
+          </mat-error>
+          </mat-form-field>
         <span>
           <label for="password">SENHA SUPER <b>SECRETA</b></label>
+        </span>
+          <mat-form-field>
           <input
             type="password"
             id="password"
             name="password"
             placeholder="coxinha123"
-            ngModel
+            matInput formControlName="password" 
           />
-        </span>
+          <mat-error *ngIf="signupForm.get('password')?.hasError('required')">
+            Senha é <strong>obrigatório</strong>
+          </mat-error>
+          </mat-form-field>
         <span class="form-forgot-password">
           ao clicar em criar conta, você concorda com todos os
           <a href="#">termos de serviço</a>
@@ -71,7 +86,11 @@
           <a class="form-button-content__create-account" href="/signin">
             Já tenho uma conta
           </a>
-          <button type="submit" class="form-button-content__signin">Criar conta</button>
+          <button 
+          type="submit" 
+          class="form-button-content__signin"
+          (click)="this.onSubmit()"
+          >Criar conta</button>
         </span>
       </form>
     </div>
