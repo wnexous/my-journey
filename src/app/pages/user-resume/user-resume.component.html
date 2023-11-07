@@ -40,6 +40,11 @@
                     <mat-error *ngIf="createResumeForm.get('email')?.hasError('required')">
                       Email é <strong>obrigatório</strong>
                     </mat-error>
+
+                    <mat-error *ngIf="createResumeForm.get('email')?.hasError('email')">
+                      Email está <strong>inválido</strong>
+                    </mat-error>
+
                 </mat-form-field>
 
                   <table class="example-full-width" cellspacing="0"><tr>

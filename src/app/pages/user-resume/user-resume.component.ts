@@ -29,7 +29,7 @@ export class UserResumeComponent {
     private http: HttpClient) {
     this.createResumeForm = this.formBuilder.group({
       name: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       phoneNumber: ['', Validators.required],
       birthdate: ['', Validators.required],
       street: ['', Validators.required],
@@ -53,6 +53,7 @@ export class UserResumeComponent {
       console.log(formData)
       this.http.post('#', formData).subscribe(
         (response) => {
+          alert('Cadastro de currículo realizado com sucesso')
           console.log('Requisição POST bem-sucedida', response);
         },
         (error) => {
