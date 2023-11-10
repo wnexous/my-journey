@@ -31,7 +31,6 @@ registerLocaleData(localePT);
 @NgModule({
   declarations: [
     AppComponent,
-    SigninComponent,
     HeaderComponent,
     FooterComponent,
     LoginFormComponent,
@@ -53,7 +52,8 @@ registerLocaleData(localePT);
     MatIconModule,
     CommonModule,
     CreateProjectComponent,
-    SignupComponent
+    SignupComponent,
+    SigninComponent
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-br' }],
   bootstrap: [AppComponent]
