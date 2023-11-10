@@ -4,6 +4,7 @@ import {Validators, FormsModule, ReactiveFormsModule, FormGroup, FormBuilder} fr
 import {NgIf} from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -16,7 +17,8 @@ export class SignupComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private signupService: SignupService)
+    private signupService: SignupService,
+    private router:Router)
     {
       this.signupForm = this.formBuilder.group({
         name: ['', Validators.required],
@@ -31,6 +33,7 @@ export class SignupComponent {
 
       this.signupService.signupUser(params).subscribe((resp) => {
         alert('Formulário enviado');
+        this.router.navigate(['/signin'])
       });
     } else {
       console.log("Erro ao enviar");
