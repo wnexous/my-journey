@@ -31,36 +31,55 @@
     <div class="form-container">
       <h1>Entrar</h1>
 
-      <form #loginPost="ngForm" class="form-content" (ngSubmit)="onSubmit(loginPost.value)">
+      <form class="form-content" [formGroup]="signinForm">
         <span>
           <label for="email">EMAIL DO <b>USUÁRIO</b></label>
-          <input
+        </span>
+          <mat-form-field>
+            <input
             type="email"
             id="email"
             name="email"
-            placeholder="digite aqui seu codinome"
-            ngModel
+            placeholder="digite aqui seu email"
+            matInput formControlName="email"
           />
-        </span>
-        <span>
-          <label for="password">SENHA SUPER <b>SECRETA</b></label>
-          <input
+          <mat-error *ngIf="signinForm.get('email')?.hasError('required')">
+            Email é <strong>obrigatório</strong>
+          </mat-error>
+          <mat-error *ngIf="signinForm.get('email')?.hasError('email')">
+            Email está em formato <strong>incorreto</strong>
+          </mat-error>
+          </mat-form-field>
+
+          <span>
+            <label for="password">SENHA SUPER <b>SECRETA</b></label>
+          </span>
+          <mat-form-field>
+            <input
             type="password"
             id="password"
             name="password"
             placeholder="coxinha123"
-            ngModel
+            matInput formControlName="password"
           />
-        </span>
-        <span>
-          <a href="#" class="form-forgot-password">Esqueceu sua senha?</a>
-        </span>
+          <mat-error *ngIf="signinForm.get('password')?.hasError('required')">
+            Senha é <strong>obrigatório</strong>
+          </mat-error>
+          </mat-form-field>
+
+          <span>
+            <a href="#" class="form-forgot-password">Esqueceu sua senha?</a>
+          </span>
 
         <span class="form-button-content">
           <a class="form-button-content__create-account" href="/signup">
-            criar uma conta
+            Criar uma conta
           </a>
-          <button type="submit" class="form-button-content__signin">Entrar</button>
+          <button 
+          type="submit" 
+          class="form-button-content__signin"
+          (click)="this.onSubmit()"
+          >Entrar</button>
         </span>
       </form>
     </div>
