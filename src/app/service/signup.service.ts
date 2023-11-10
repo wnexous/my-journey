@@ -10,13 +10,14 @@ export class SignupService {
     private httpClient: HttpClient,
   ) { }
 
-  public signupUser(formData: any) {
+  public signupUser(query: any) {
     const params = new HttpParams()
-    .set('formData', formData)
+    .set('name', query.name)
+    .set('email', query.email)
+    .set('password', query.password)
 
-    console.log(formData)
-    console.log('/api/curriculum?' + params.toString)
-    return this.httpClient.post('/api/curriculum?' + params.toString, {});
+    console.log('/api/user?' + params.toString())
+    return this.httpClient.post('http://localhost:5500/api/user?' + params.toString(), {});
 
   }
 }
