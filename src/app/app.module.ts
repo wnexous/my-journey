@@ -26,6 +26,8 @@ import { CreateProjectComponent } from './pages/create-project/create-project.co
 
 import { registerLocaleData } from '@angular/common';
 import localePT from '@angular/common/locales/pt';
+import { MenuIsLoggedComponent } from './components/menu-is-logged/menu-is-logged.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 registerLocaleData(localePT);
 
 @NgModule({
@@ -38,7 +40,9 @@ registerLocaleData(localePT);
     InputPasswordComponent,
     InputDateComponent,
     LoadingComponent,    
-    MenuHomeIsNotLoggedComponent
+    MenuHomeIsNotLoggedComponent, 
+    MenuIsLoggedComponent, 
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
