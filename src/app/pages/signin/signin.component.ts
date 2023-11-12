@@ -32,10 +32,19 @@ export class SigninComponent {
       const params = this.signinForm.value;
 
       this.signinService.signinUser(params).subscribe(
-        (resp) => {
+        (resp: any) => {
         if(resp) {
           alert('Login realizado com sucesso!');
+          console.log(resp)
+
+          window.localStorage.setItem('token', resp[0].token)
+          window.localStorage.setItem('uuid', resp[0].uuid)
+
           this.router.navigate(['/']) // adicionar a página home com usuário logado quando houver
+          .then(() => {
+            window.location.reload()
+          })
+
         }
       },
         (error) => {
