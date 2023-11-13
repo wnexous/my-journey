@@ -28,8 +28,8 @@ export class UserResumeComponent {
     private formBuilder: FormBuilder, 
     private curriculumService: CurriculumService) {
     this.createResumeForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      name: { value: '', disabled: true }, // Desabilitar o campo name
+      email: { value: '', disabled: true }, // Desabilitar o campo email
       phoneNumber: ['', Validators.required],
       birthDate: ['', Validators.required],
       street: ['', Validators.required],
