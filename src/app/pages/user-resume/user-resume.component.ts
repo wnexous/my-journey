@@ -14,6 +14,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 
 import { CurriculumService } from 'src/app/service/curriculum/curriculum.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'user-resume',
   templateUrl: './user-resume.component.html',
@@ -26,10 +28,11 @@ export class UserResumeComponent {
 
   constructor(
     private formBuilder: FormBuilder, 
-    private curriculumService: CurriculumService) {
+    private curriculumService: CurriculumService,
+    private router: Router) {
     this.createResumeForm = this.formBuilder.group({
-      name: { value: '', disabled: true }, // Desabilitar o campo name
-      email: { value: '', disabled: true }, // Desabilitar o campo email
+      name: { value: '', disabled: true },
+      email: { value: '', disabled: true },
       phoneNumber: ['', Validators.required],
       birthDate: ['', Validators.required],
       street: ['', Validators.required],
@@ -44,15 +47,29 @@ export class UserResumeComponent {
     });
   }
 
-  ngOnInit() {
-    console.log("Chamando ngOnInit");
+  public getUser() {
+    this.curriculumService.getUser().subscribe(
+      (user: any) => {
+        console.log("Dados do usuário:", user);
+        if(user) {
+          this.createResumeForm.patchValue({
+            name: user[0].name,
+            email: user[0].email,
+          })
+        }
+      },
+      (error) => {
+        console.log("Erro ao obter campo", error);
+      }
+    )
+  }
+
+  public getCurriculum() {
     this.curriculumService.getCurriculum().subscribe(
       (curriculum: any) => {
         console.log("Dados do curriculum:", curriculum);
         if (curriculum) {
           this.createResumeForm.patchValue({
-            name: curriculum[0].name,
-            email: curriculum[0].email,
             phoneNumber: curriculum[0].phoneNumber,
             birthDate: new Date(curriculum[0].birthDate),
             street: curriculum[0].street,
@@ -72,21 +89,40 @@ export class UserResumeComponent {
       }
     );
   }
-  
-  
+
+  ngOnInit() {
+    this.getUser();
+    this.getCurriculum();
+  }
   
   OnSubmit() {
     if (this.createResumeForm.valid) {
+
+      this.createResumeForm.get('name')?.enable();
+      this.createResumeForm.get('email')?.enable();
+
       const formData = this.createResumeForm.value;
       const datePipe = new DatePipe('pt-BR');
       formData.birthDate = datePipe.transform(formData.birthDate, 'dd/MM/yyyy');
+  
+      console.log(formData);
+      console.log(formData.name);
+      console.log(formData.email);
 
-      console.log(formData)
-      this.curriculumService.createCurriculum(formData).subscribe((resp) => {
-        alert('Formulário enviado');
-      });
-    } else {
-      console.log("Erro ao enviar");
+      this.curriculumService.createCurriculum(formData).subscribe(
+        (resp) => {
+          alert('Formulário enviado');
+
+          this.router.navigate(['/create-project']) // adicionar a página de perfil do usuário quando houver
+          .then(() => {
+            window.location.reload()
+          })
+
+        },
+        (error) => {
+          console.log('Erro ao enviar formulário', error);
+        }
+      );
     }
-    }
+  }
 }
