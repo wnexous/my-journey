@@ -39,6 +39,7 @@ export class SigninComponent {
 
           window.localStorage.setItem('token', resp[0].token)
           window.localStorage.setItem('uuid', resp[0].uuid)
+          window.localStorage.setItem('email', resp[0].email)
 
           this.router.navigate(['/']) // adicionar a página home com usuário logado quando houver
           .then(() => {
