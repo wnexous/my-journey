@@ -54,7 +54,7 @@ export class UserResumeComponent {
             name: curriculum[0].name,
             email: curriculum[0].email,
             phoneNumber: curriculum[0].phoneNumber,
-            birthDate: curriculum[0].birthDate,
+            birthDate: new Date(curriculum[0].birthDate),
             street: curriculum[0].street,
             streetNumber: curriculum[0].streetNumber,
             district: curriculum[0].district,
@@ -79,7 +79,7 @@ export class UserResumeComponent {
     if (this.createResumeForm.valid) {
       const formData = this.createResumeForm.value;
       const datePipe = new DatePipe('pt-BR');
-      formData.birthDate = datePipe.transform(formData.birthDate, 'dd-MM-yyyy');
+      formData.birthDate = datePipe.transform(formData.birthDate, 'dd/MM/yyyy');
 
       console.log(formData)
       this.curriculumService.createCurriculum(formData).subscribe((resp) => {
