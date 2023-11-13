@@ -69,14 +69,14 @@
                         <mat-form-field>
                         <mat-label>dd/mm/aaaa</mat-label>
                         <input 
-                        name="birthdate"
+                        name="birthDate"
                         matInput 
                         [matDatepicker]="picker" 
-                        matInput formControlName="birthdate" 
+                        matInput formControlName="birthDate" 
                         >
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
-                        <mat-error *ngIf="createResumeForm.get('birthdate')?.hasError('required')">
+                        <mat-error *ngIf="createResumeForm.get('birthDate')?.hasError('required')">
                           Data de nascimento é <strong>obrigatório</strong>
                         </mat-error>
                       </mat-form-field></td>
