@@ -7,33 +7,21 @@ import { Observable } from 'rxjs';
 })
 export class CurriculumService {
 
-  constructor(
-    private httpClient: HttpClient,
-  ) { }
+  constructor(private httpClient: HttpClient) {}
 
-
-  public getCurriculum() {
+  private headers(): HttpHeaders {
     const token = window.localStorage.getItem('token');
     const uuid: any = window.localStorage.getItem('uuid');
-    const email: any = window.localStorage.getItem('email');
-
-    const params = new HttpParams()
-    .set('email', email)
-
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token,
-        'X-Request-Id': uuid
-      }),
-      params: params, // Não é necessário chamar toString() aqui
-    };
-
-    return this.httpClient.get('http://localhost:5500/api/curriculum', httpOptions);
+    
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token,
+      'X-Request-Id': uuid
+    });
   }
 
-    public createCurriculum(query: any) {
-      const params = new HttpParams()
+  private params(query: any): HttpParams {
+    return new HttpParams()
       .set('name', query.name)
       .set('email', query.email)
       .set('phoneNumber', query.phoneNumber)
@@ -46,21 +34,28 @@ export class CurriculumService {
       .set('professionalObjective', query.professionalObjective)
       .set('professionalExperience', query.professionalExperience)
       .set('coursesAndCertifications', query.coursesAndCertifications)
-      .set('languages', query.languages)
+      .set('languages', query.languages);
+  }
 
-      const token = window.localStorage.getItem('token')
-      const uuid: any = window.localStorage.getItem('uuid')
-    
-      const httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type': 'multipart/form-data',
-          'Authorization': 'Bearer ' + token,
-          'X-Request-Id': uuid
-        })
-      };
-  
-      console.log('/api/curriculum?' + params.toString())
-      return this.httpClient.post('http://localhost:5500/api/curriculum?' + params.toString(), {}, httpOptions);
-  
-    }
+  public getUser(): Observable<any> {
+    const params = this.params({ email: window.localStorage.getItem('email') });
+    const httpOptions = { headers: this.headers(), params: params };
+
+    return this.httpClient.get('http://localhost:5500/api/user', httpOptions);
+  }
+
+  public getCurriculum(): Observable<any> {
+    const params = this.params({ email: window.localStorage.getItem('email') });
+    const httpOptions = { headers: this.headers(), params: params };
+
+    return this.httpClient.get('http://localhost:5500/api/curriculum', httpOptions);
+  }
+
+  public createCurriculum(query: any): Observable<any> {
+    const params = this.params(query);
+    const httpOptions = { headers: this.headers() };
+
+    console.log('/api/curriculum?' + params.toString());
+    return this.httpClient.post('http://localhost:5500/api/curriculum?' + params.toString(), {}, httpOptions);
+  }
 }
