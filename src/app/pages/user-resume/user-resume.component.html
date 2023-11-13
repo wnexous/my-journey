@@ -22,9 +22,6 @@
                 placeholder="Ex. Joaquim Luís da Costa" 
                 matInput formControlName="name"
                 >
-                  <mat-error *ngIf="createResumeForm.get('name')?.hasError('required')">
-                    Nome completo é <strong>obrigatório</strong>
-                  </mat-error>
                 </mat-form-field>
 
                 <span id="forms-title">E-mail</span>
@@ -36,15 +33,6 @@
                     matInput formControlName="email"
                     >
                     <mat-icon matSuffix>email</mat-icon>
-
-                    <mat-error *ngIf="createResumeForm.get('email')?.hasError('required')">
-                      Email é <strong>obrigatório</strong>
-                    </mat-error>
-
-                    <mat-error *ngIf="createResumeForm.get('email')?.hasError('email')">
-                      Email está <strong>inválido</strong>
-                    </mat-error>
-
                 </mat-form-field>
 
                   <table class="example-full-width" cellspacing="0"><tr>
