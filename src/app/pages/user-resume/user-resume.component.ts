@@ -69,18 +69,22 @@ export class UserResumeComponent {
       (curriculum: any) => {
         console.log("Dados do curriculum:", curriculum);
         if (curriculum) {
+          const curriculo = curriculum[0]
+          const dateBrFormat = curriculo.birthDate.split("/")
+          const parsedDate = new Date([dateBrFormat[1], dateBrFormat[0], dateBrFormat[2]].join("/"))
+          console.log(parsedDate)
           this.createResumeForm.patchValue({
-            phoneNumber: curriculum[0].phoneNumber,
-            birthDate: new Date(curriculum[0].birthDate),
-            street: curriculum[0].street,
-            streetNumber: curriculum[0].streetNumber,
-            district: curriculum[0].district,
-            city: curriculum[0].city,
-            state: curriculum[0].state,
-            professionalObjective: curriculum[0].professionalObjective,
-            professionalExperience: curriculum[0].professionalExperience,
-            coursesAndCertifications: curriculum[0].coursesAndCertifications,
-            languages: curriculum[0].languages,
+            phoneNumber: curriculo.phoneNumber,
+            birthDate: parsedDate,
+            street: curriculo.street,
+            streetNumber: curriculo.streetNumber,
+            district: curriculo.district,
+            city: curriculo.city,
+            state:curriculo.state,
+            professionalObjective: curriculo.professionalObjective,
+            professionalExperience: curriculo.professionalExperience,
+            coursesAndCertifications: curriculo.coursesAndCertifications,
+            languages: curriculo.languages,
           });
         }
       },
