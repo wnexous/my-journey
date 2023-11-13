@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
 import {Validators, FormsModule, ReactiveFormsModule, FormGroup, FormBuilder} from '@angular/forms';
@@ -13,8 +13,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 
-import { HttpClient } from '@angular/common/http';
-import { ResumeService } from 'src/app/service/resume.service';
+import { CurriculumService } from 'src/app/service/curriculum/curriculum.service';
 @Component({
   selector: 'user-resume',
   templateUrl: './user-resume.component.html',
@@ -27,12 +26,12 @@ export class UserResumeComponent {
 
   constructor(
     private formBuilder: FormBuilder, 
-    private resumeService: ResumeService) {
+    private curriculumService: CurriculumService) {
     this.createResumeForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phoneNumber: ['', Validators.required],
-      birthdate: ['', Validators.required],
+      birthDate: ['', Validators.required],
       street: ['', Validators.required],
       streetNumber: ['', Validators.required],
       district: ['', Validators.required],
@@ -45,14 +44,45 @@ export class UserResumeComponent {
     });
   }
 
+  ngOnInit() {
+    console.log("Chamando ngOnInit");
+    this.curriculumService.getCurriculum().subscribe(
+      (curriculum: any) => {
+        console.log("Dados do curriculum:", curriculum);
+        if (curriculum) {
+          this.createResumeForm.patchValue({
+            name: curriculum[0].name,
+            email: curriculum[0].email,
+            phoneNumber: curriculum[0].phoneNumber,
+            birthDate: curriculum[0].birthDate,
+            street: curriculum[0].street,
+            streetNumber: curriculum[0].streetNumber,
+            district: curriculum[0].district,
+            city: curriculum[0].city,
+            state: curriculum[0].state,
+            professionalObjective: curriculum[0].professionalObjective,
+            professionalExperience: curriculum[0].professionalExperience,
+            coursesAndCertifications: curriculum[0].coursesAndCertifications,
+            languages: curriculum[0].languages,
+          });
+        }
+      },
+      (error) => {
+        console.log("Erro ao obter campo", error);
+      }
+    );
+  }
+  
+  
+  
   OnSubmit() {
     if (this.createResumeForm.valid) {
       const formData = this.createResumeForm.value;
       const datePipe = new DatePipe('pt-BR');
-      formData.birthdate = datePipe.transform(formData.birthdate, 'dd/MM/yyyy');
+      formData.birthDate = datePipe.transform(formData.birthDate, 'dd-MM-yyyy');
 
       console.log(formData)
-      this.resumeService.createResume(formData).subscribe((resp) => {
+      this.curriculumService.createCurriculum(formData).subscribe((resp) => {
         alert('Formulário enviado');
       });
     } else {
