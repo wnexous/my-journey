@@ -10,9 +10,8 @@
                 <img src="./../../../assets/icons/curriculum_icon.svg" alt="">
                 <span id="title">Projetos</span>
             </div>
-            <div class="organize-cards">
-                <app-card></app-card>
-                <app-card></app-card>
+            <div class="organize-cards" *ngFor="let project of projects">
+                <app-card [projectData]="project"></app-card>
             </div>
         </div>
     </div>

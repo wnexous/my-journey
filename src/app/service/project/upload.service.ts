@@ -9,6 +9,30 @@ export class UploadService {
  constructor(
    private httpClient: HttpClient,
  ) { }
+
+ private headers(): HttpHeaders {
+  const token = window.localStorage.getItem('token');
+  const uuid: any = window.localStorage.getItem('uuid');
+  
+  return new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + token,
+    'X-Request-Id': uuid
+  });
+}
+
+private params(query: any): HttpParams {
+  return new HttpParams()
+  .set('title', query.title)
+  .set('description', query.description)
+}
+
+ public getProject() {
+  const params = this.params({ email: window.localStorage.getItem('email') });
+  const httpOptions = { headers: this.headers(), params: params };
+
+  return this.httpClient.get('http://localhost:5500/api/project', httpOptions);
+}
  
  public uploadFile(title: string, description: string, image: string) {
 
