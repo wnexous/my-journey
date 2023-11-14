@@ -10,13 +10,11 @@ export class UploadService {
    private httpClient: HttpClient,
  ) { }
  
- public uploadFile(title: string, description: string, file: File) {
-  const formData = new FormData();
-  formData.append('file', file);
+ public uploadFile(title: string, description: string, image: string) {
 
   const params = new HttpParams()
   .set('title', title)
-  .set('description', description);
+  .set('description', description)
 
   const token = window.localStorage.getItem('token')
   const uuid: any = window.localStorage.getItem('uuid')
@@ -25,11 +23,11 @@ export class UploadService {
     headers: new HttpHeaders({
       'Content-Type': 'multipart/form-data',
       'Authorization': 'Bearer ' + token,
-      'X-Request-Id': uuid
+      'X-Request-Id': uuid,
     })
   };
 
-  return this.httpClient.post('http://localhost:5500/api/project?' + params.toString(), formData, httpOptions);
+  return this.httpClient.post('http://localhost:5500/api/project?' + params.toString(), image, httpOptions);
 }
 
 }

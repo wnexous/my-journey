@@ -38,7 +38,6 @@ export class CreateProjectComponent {
 
   onFileChange(event: any) {
     if (event.target && event.target.files && event.target.files.length > 0) {
-      console.log(event.target.files[0]);
       this.file = event.target.files[0];
       this.selectedFileName = this.file ? this.file.name : null;
     } else {
@@ -54,9 +53,14 @@ export class CreateProjectComponent {
       const title = this.createProjetForm.get('title')!.value;
       const description = this.createProjetForm.get('description')!.value;
 
-      this.uploadService.uploadFile(title, description, this.file).subscribe((resp) => {
-        alert('Uploaded');
-      });
+      this.file.arrayBuffer().then(arrayBuffer => {
+        const base64String = btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)));
+        const image = `data:${this.file?.type};base64,${base64String}`
+        this.uploadService.uploadFile(title, description, image).subscribe((resp) => {
+          alert('Uploaded');
+        });
+      })
+
     } else {
       alert("Please select a file first");
     }
