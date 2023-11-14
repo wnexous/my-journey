@@ -1,0 +1,51 @@
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 40px;
+    margin: 20px;
+}
+
+#title {
+    font-family: IBM-Plex-Mono-bold;
+    font-size: 24px;
+    color: #9A9A9A;
+    padding: 20px;
+}
+
+.curriculum {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    margin: 60px 30px 30px 30px;
+    width: 100%;
+    overflow-y: auto; /* ou overflow: hidden; dependendo do que você deseja */
+    position: relative; /* Certifique-se de que a posição é relativa */
+    flex-shrink: 0;
+    border-radius: 16px;
+    background: #FFF;
+    box-shadow: 0px 4px 64px 0px rgba(0, 0, 0, 0.08);
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.organize-cards {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.app-card {
+    box-sizing: border-box;
+    height: 100%; /* ou height: 100vh; */
+
+}
