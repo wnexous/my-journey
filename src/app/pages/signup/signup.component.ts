@@ -1,4 +1,4 @@
-import { SignupService } from './../../service/signup.service';
+import { SignupService } from './../../service/signup/signup.service';
 import { Component } from '@angular/core';
 import {Validators, FormsModule, ReactiveFormsModule, FormGroup, FormBuilder} from '@angular/forms';
 import {NgIf} from '@angular/common';

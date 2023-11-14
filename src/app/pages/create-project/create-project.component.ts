@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
 
 import {Validators, FormsModule, ReactiveFormsModule, FormGroup, FormBuilder} from '@angular/forms';
 import {NgIf} from '@angular/common';
@@ -10,7 +9,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonModule} from '@angular/material/button';
 
-import { UploadService } from 'src/app/service/upload.service';
+import { UploadService } from 'src/app/service/project/upload.service';
 
 @Component({
   selector: 'app-create-project',
