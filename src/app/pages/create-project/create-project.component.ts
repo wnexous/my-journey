@@ -10,6 +10,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 
 import { UploadService } from 'src/app/service/project/upload.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-project',
@@ -26,7 +27,8 @@ export class CreateProjectComponent {
   constructor(
 
     private formBuilder: FormBuilder,
-    private uploadService: UploadService
+    private uploadService: UploadService,
+    private router:Router
   ) {
     this.createProjetForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -64,6 +66,12 @@ export class CreateProjectComponent {
 
       this.uploadService.uploadFile(title, description, this.fileInBase64).subscribe((resp) => {
         alert('Uploaded');
+
+        this.router.navigate(['/profile'])
+        .then(() => {
+          window.location.reload()
+        })
+        
       });
 
     } else {
