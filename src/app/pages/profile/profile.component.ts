@@ -18,7 +18,6 @@ export class ProfileComponent {
   private getProjects(): void {
     this.uploadService.getProject().subscribe(
       (projects: any) => {
-        console.log("Dados dos projetos:", projects);
         this.projects = projects;
       },
       (error) => {
