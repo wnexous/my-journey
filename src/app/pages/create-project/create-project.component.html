@@ -54,6 +54,7 @@
           <input
             (change)="this.onFileChange($event)"
             class="form-control"
+            formControlName="image"
             type="file"
             hidden
             id="formFile"
@@ -76,7 +77,7 @@
             mat-fab
             extended
             color="primary"
-            (click)="this.upload()"
+            (click)="this.confirm()"
           >
             <mat-icon>cloud_upload</mat-icon>
             Cadastrar
