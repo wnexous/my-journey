@@ -35,7 +35,6 @@ export class SigninComponent {
         (resp: any) => {
         if(resp) {
           alert('Login realizado com sucesso!');
-          console.log(resp)
 
           window.localStorage.setItem('token', resp[0].token)
           window.localStorage.setItem('uuid', resp[0].uuid)
