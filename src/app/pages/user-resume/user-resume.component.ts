@@ -117,7 +117,7 @@ export class UserResumeComponent {
         (resp) => {
           alert('Formulário enviado');
 
-          this.router.navigate(['/create-project']) // adicionar a página de perfil do usuário quando houver
+          this.router.navigate(['/profile'])
           .then(() => {
             window.location.reload()
           })
