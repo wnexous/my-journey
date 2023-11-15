@@ -10,7 +10,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 
 import { UploadService } from 'src/app/service/project/upload.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-project',
@@ -24,15 +24,28 @@ export class CreateProjectComponent {
   createProjetForm: FormGroup;
   selectedFileName: string | null = null;
   fileInBase64: string
-  constructor(
 
+  constructor(
     private formBuilder: FormBuilder,
     private uploadService: UploadService,
-    private router:Router
+    private router:Router,
+    private activatedRoute:ActivatedRoute
   ) {
     this.createProjetForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
+      image: ['']
+    });
+  }
+
+  ngOnInit() {
+    this.activatedRoute.params.subscribe(params => {
+      const projectData = JSON.parse(params['project']);
+
+      this.createProjetForm.patchValue({
+        title: projectData.title,
+        description: projectData.description,
+      });
     });
   }
 
@@ -49,33 +62,68 @@ export class CreateProjectComponent {
       fileRender.readAsDataURL(inputElement.files[0])
 
       // onload recebe uma callback quando a imagem for carregada. o fileRender.result contem a base64 em string
-      fileRender.onload = () => this.fileInBase64 = fileRender.result!.toString()
-
-      // salva o nome da imagem pra rendenizar no front
-      this.selectedFileName = fileName
+      fileRender.onload = () => {
+        this.fileInBase64 = fileRender.result!.toString()
+        this.selectedFileName = fileName;
+      }
+      
     } else {
       console.log("No files selected");
       this.selectedFileName = null;
     }
   }
 
-  async upload() {
-    if (this.createProjetForm.valid && this.fileInBase64) {
-      const title = this.createProjetForm.get('title')!.value;
-      const description = this.createProjetForm.get('description')!.value;
+  async confirm() {
+    if (this.createProjetForm.valid) {
 
-      this.uploadService.uploadFile(title, description, this.fileInBase64).subscribe((resp) => {
-        alert('Uploaded');
-
-        this.router.navigate(['/profile'])
-        .then(() => {
-          window.location.reload()
-        })
-        
-      });
+      if (window.localStorage.getItem('projectId')) {
+        this.update()
+      } else {
+        this.upload()
+      }
 
     } else {
       alert("Please select a file first");
     }
   }
+
+  public upload() {
+    const title = this.createProjetForm.get('title')!.value;
+    const description = this.createProjetForm.get('description')!.value;
+
+    if(!this.fileInBase64) {
+      alert("Please select a file first");
+    } else {
+      this.uploadService.uploadFile(title, description, this.fileInBase64).subscribe(() => {
+        alert('Uploaded');
+      });
+      window.localStorage.removeItem('projectId')
+      window.localStorage.removeItem('image')
+
+      this.router.navigate(['/profile'])
+      .then(() => {
+        window.location.reload()
+      })
+    }
+  }
+
+  public update() {
+    const title = this.createProjetForm.get('title')!.value;
+    const description = this.createProjetForm.get('description')!.value;
+
+    Promise.all([
+      this.uploadService.deleteFile().subscribe(),
+      this.uploadService.updateFile(title, description, this.fileInBase64).subscribe(() => {
+        alert('Updated');
+      })
+    ])
+    window.localStorage.removeItem('projectId')
+    window.localStorage.removeItem('image')
+
+    this.router.navigate(['/profile'])
+    .then(() => {
+      window.location.reload()
+    })
+  }
+
 }
