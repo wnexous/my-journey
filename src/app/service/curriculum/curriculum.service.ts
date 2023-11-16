@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CurriculumService {
+  public curriculum: any
 
   constructor(private httpClient: HttpClient) {}
 
@@ -55,7 +56,23 @@ export class CurriculumService {
     const params = this.params(query);
     const httpOptions = { headers: this.headers() };
 
-    console.log('/api/curriculum?' + params.toString());
     return this.httpClient.post('http://localhost:5500/api/curriculum?' + params.toString(), {}, httpOptions);
+  }
+
+  public deleteCurriculum(curriculumId: string) {
+    console.log(curriculumId)
+
+    const token = window.localStorage.getItem('token')
+    const uuid: any = window.localStorage.getItem('uuid')
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'multipart/form-data',
+        'Authorization': 'Bearer ' + token,
+        'X-Request-Id': uuid,
+      })
+    };
+
+    return this.httpClient.delete('http://localhost:5500/api/curriculum?id=' + curriculumId, httpOptions);
   }
 }
