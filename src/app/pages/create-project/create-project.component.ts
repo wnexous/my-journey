@@ -24,6 +24,7 @@ export class CreateProjectComponent {
   createProjetForm: FormGroup;
   selectedFileName: string | null = null;
   fileInBase64: string
+  projectIdExists: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,6 +40,8 @@ export class CreateProjectComponent {
   }
 
   ngOnInit() {
+    this.changeTextTitleadButton();
+
     this.activatedRoute.params.subscribe(params => {
       const projectData = JSON.parse(params['project']);
 
@@ -47,7 +50,7 @@ export class CreateProjectComponent {
         description: projectData.description,
       });
     });
-  }
+  } 
 
   async onFileChange(event: Event) {
     const inputElement = event.target as HTMLInputElement;
@@ -73,30 +76,17 @@ export class CreateProjectComponent {
     }
   }
 
-  async confirm() {
-    if (this.createProjetForm.valid) {
-
-      if (window.localStorage.getItem('projectId')) {
-        this.update()
-      } else {
-        this.upload()
-      }
-
+  async createProject() {
+    if (!this.createProjetForm.valid || !this.fileInBase64) {
+      alert("As informações estão inválidas");
     } else {
-      alert("Please select a file first");
-    }
-  }
+      const title = this.createProjetForm.get('title')!.value;
+      const description = this.createProjetForm.get('description')!.value;
 
-  public upload() {
-    const title = this.createProjetForm.get('title')!.value;
-    const description = this.createProjetForm.get('description')!.value;
-
-    if(!this.fileInBase64) {
-      alert("Please select a file first");
-    } else {
       this.uploadService.uploadFile(title, description, this.fileInBase64).subscribe(() => {
         alert('Uploaded');
       });
+
       window.localStorage.removeItem('projectId')
       window.localStorage.removeItem('image')
 
@@ -105,25 +95,41 @@ export class CreateProjectComponent {
         window.location.reload()
       })
     }
+
   }
 
-  public update() {
-    const title = this.createProjetForm.get('title')!.value;
-    const description = this.createProjetForm.get('description')!.value;
+  async updateProject() {
+    if(!this.createProjetForm.valid) {
+      alert("As informações estão inválidas");
+    } else {
+      const title = this.createProjetForm.get('title')!.value;
+      const description = this.createProjetForm.get('description')!.value;
+      const projectId = this.getProjectId()!;
+  
+      Promise.all([
+        this.uploadService.deleteFile(projectId).subscribe(),
+        this.uploadService.updateFile(title, description, this.fileInBase64).subscribe(() => {
+          alert('Updated');
+        })
+      ])
 
-    Promise.all([
-      this.uploadService.deleteFile().subscribe(),
-      this.uploadService.updateFile(title, description, this.fileInBase64).subscribe(() => {
-        alert('Updated');
+      window.localStorage.removeItem('projectId')
+      window.localStorage.removeItem('image')
+  
+      this.router.navigate(['/profile'])
+      .then(() => {
+        window.location.reload()
       })
-    ])
-    window.localStorage.removeItem('projectId')
-    window.localStorage.removeItem('image')
+    }
+  }
 
-    this.router.navigate(['/profile'])
-    .then(() => {
-      window.location.reload()
-    })
+  public changeTextTitleadButton() {
+    this.projectIdExists = !!this.getProjectId();
+  } 
+
+
+  public getProjectId() {
+    return window.localStorage.getItem('projectId');
   }
 
 }
