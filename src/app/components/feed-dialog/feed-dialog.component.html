@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>
+    Criar uma publicação
+</h2>
+
+<mat-dialog-content>
+    <span>No que você está pensando?</span>
+</mat-dialog-content>
+
+<mat-dialog-content>
+
+    <form
+        [formGroup]="feedForm">
+
+        <mat-form-field class="example-full-width">
+            <textarea
+            matInput
+            formControlName="description"
+            placeholder="Ex. Meu projeto conta a história de..."
+            >
+            </textarea>
+            <mat-error
+            *ngIf="feedForm.get('description')?.hasError('required')"
+            >
+            Mensagem é <strong>obrigatório</strong>
+            </mat-error>
+        </mat-form-field>
+    </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button 
+    class="confirm-button"
+    mat-button 
+    mat-dialog-close
+    >Publicar</button>
+
+    <button 
+    class="close-button"
+    mat-button 
+    mat-dialog-close
+    >Fechar</button>
+</mat-dialog-actions>

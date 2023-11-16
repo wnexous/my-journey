@@ -36,6 +36,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { EditButtonComponent } from './components/curriculum-buttons/edit-button.component';
 import { HomeIsLoggedComponent } from './pages/home-is-logged/home-is-logged.component';
+import { FeedDialogComponent } from './components/feed-dialog/feed-dialog.component';
 
 registerLocaleData(localePT);
 
@@ -52,7 +53,8 @@ registerLocaleData(localePT);
     MenuHomeIsNotLoggedComponent, 
     MenuIsLoggedComponent, 
     ProfileComponent, 
-    ViewProjectDialogComponent, HomeIsLoggedComponent, 
+    ViewProjectDialogComponent, 
+    HomeIsLoggedComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,7 +73,8 @@ registerLocaleData(localePT);
     CardComponent,
     MatDialogModule,
     MatButtonModule,
-    EditButtonComponent
+    EditButtonComponent,
+    FeedDialogComponent
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-br' }],
   bootstrap: [AppComponent]

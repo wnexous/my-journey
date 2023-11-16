@@ -1,0 +1,40 @@
+button {
+    border-radius: 6px;
+	border: none;
+	padding: 12px;
+    font-size: 18px;
+    font-family: IBM-Plex-Mono;
+	cursor: pointer;
+	outline: inherit;
+    margin: 10px;
+}
+
+.confirm-button {
+    background-color: #A576BC;
+    color: #fff;
+}
+
+.confirm-button:hover {
+    background-color: #c68ee1
+}
+
+.close-button {
+    color: #000;
+    background-color: inherit;
+}
+
+.close-button:hover {
+    background-color: #ced4da;
+}
+
+mat-dialog-actions {
+    justify-content: end;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+mat-error {
+    color: red; /* ou a cor desejada */
+}

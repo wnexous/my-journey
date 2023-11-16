@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FeedDialogComponent } from 'src/app/components/feed-dialog/feed-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-home-is-logged',
@@ -7,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class HomeIsLoggedComponent {
 
+  constructor(
+    public dialog: MatDialog
+    ) {}
+
+  openFeedDialog() {
+    this.dialog.open(FeedDialogComponent, {
+      width: '700px'
+    });
+  }
 }
