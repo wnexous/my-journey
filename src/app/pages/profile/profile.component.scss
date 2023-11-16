@@ -7,6 +7,14 @@
 .title {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-name {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     height: 40px;
     margin: 20px;
@@ -47,5 +55,22 @@
 .app-card {
     box-sizing: border-box;
     height: 100%; /* ou height: 100vh; */
-
 }
+
+.new-project {
+    border-radius: 6px;
+    background-color: inherit;
+    color: #000;
+	border: none;
+	padding: 8px;
+    font-size: 12px;
+	font-family: IBM-Plex-Mono-bold;
+	cursor: pointer;
+	outline: inherit;
+  }
+  
+  .new-project:hover {
+    color: #fff;
+    background-color: #A576BC;
+  
+  }
