@@ -13,7 +13,7 @@
                     <span id="title">Currículo</span>
                 </div> 
             </div>
-            <div class="curriculum-info" *ngIf="curriculum">
+            <ng-container class="curriculum-info" *ngIf="curriculum && curriculum.length > 0; else noCurriculum">
 
                 <div class="curriculum-item">
                     <span class="title-curriculum">Nome:</span>
@@ -79,7 +79,17 @@
                     <span class="title-curriculum">Idiomas:</span>
                     <span class="body-curriculum">{{ curriculum[0].languages }}</span>
                 </div>
-            </div>
+            </ng-container>
+
+            <ng-template #noCurriculum>
+                <span id="noItem">Currículo não cadastrado</span>
+                <button 
+                class="new-curriculum"
+                (click)="this.redirectCreateProject()">
+                    Cadastrar
+                </button> 
+            </ng-template>
+
         </div>
 
 
@@ -90,7 +100,6 @@
                     <span id="title">Projetos</span>
                 </div>
                     <button 
-                    class="new-project"
                     (click)="this.redirectCreateProject()">
                         Novo projeto
                     </button>            
@@ -104,7 +113,7 @@
 
             <!-- Mensagem quando não há projetos -->
             <ng-template #noProjects>
-                <span id="noProject">Não há projetos cadastrados</span>
+                <span id="noItem">Não há projetos cadastrados</span>
             </ng-template>
         </div>
     </div>

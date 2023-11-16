@@ -45,16 +45,16 @@ button {
 }
 
 .view-button {
-  color: #fff;
+  border-radius: 6px;
+  background-color: #A576BC;
+  color: #fff !important;
   text-align: center;
   font-family: IBM-Plex-Mono;
   font-size: 12px;
 }
 
 .view-button:hover {
-  color: #fff;
-  background-color: #A576BC;
-
+  background-color: #c68ee1;
 }
 
 .edit-button:hover {
