@@ -38,18 +38,29 @@ export class CardComponent {
   }
 
   deleteProject() {
-    const projectId = this.projectData._id;
+    const projectName = this.projectData.title; 
 
-    this.uploadService.deleteFile(projectId).subscribe(
-      () => {
-        this.router.navigate(['/profile']).then(() => {
-          window.location.reload();
-        });
-      },
-      (error) => {
-        console.error('Erro ao excluir o projeto:', error);
-      }
-    );
-  }
+    // Usar window.confirm() para exibir um alerta de confirmação com o título do projeto
+    const isConfirmed = window.confirm(`Tem certeza de que deseja excluir o projeto "${projectName}"?`);
+  
+    // Verificar se o usuário confirmou a exclusão
+    if (isConfirmed) {
+      const projectId = this.projectData._id;
+  
+      this.uploadService.deleteFile(projectId).subscribe(
+        () => {
+          this.router.navigate(['/profile']).then(() => {
+            window.location.reload();
+          });
+        },
+        (error) => {
+          console.error('Erro ao excluir o projeto:', error);
+        }
+      );
+    } else {
+      // Código a ser executado se o usuário clicar em "Cancelar"
+      console.log('Exclusão cancelada pelo usuário.');
+    }
+  }  
 
 }
