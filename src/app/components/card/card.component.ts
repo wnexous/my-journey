@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import {NgIf} from '@angular/common';
 
+import { UploadService } from 'src/app/service/project/upload.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,7 +17,8 @@ import { Router } from '@angular/router';
 export class CardComponent {
 
   constructor(
-    private router:Router
+    private router:Router,
+    private uploadService:UploadService
     ) {}
 
   @Input() projectData: any; 
@@ -33,6 +35,21 @@ export class CardComponent {
     { 
       project: JSON.stringify(this.projectData) 
     }]);
+  }
+
+  deleteProject() {
+    const projectId = this.projectData._id;
+
+    this.uploadService.deleteFile(projectId).subscribe(
+      () => {
+        this.router.navigate(['/profile']).then(() => {
+          window.location.reload();
+        });
+      },
+      (error) => {
+        console.error('Erro ao excluir o projeto:', error);
+      }
+    );
   }
 
 }
