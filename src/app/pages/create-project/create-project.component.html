@@ -1,11 +1,18 @@
 <div class="content">
-  <span id="page-title">Cadastro de projeto</span>
+
+  <div *ngIf="!projectIdExists">
+    <span id="page-title">Cadastrar um projeto</span>
+  </div>
+
+  <div *ngIf="projectIdExists">
+    <span id="page-title">Atualizar projeto</span>
+  </div>
 
   <div class="project-forms">
     <div class="forms-fields">
-      <p>
+      <span>
         <strong>Cadastre seu projeto conosco e dê vida aos seus sonhos!</strong>
-      </p>
+      </span>
       <p>
         Faça parte de nossa comunidade de inovadores, empreendedores e
         criativos.
@@ -68,21 +75,42 @@
           <ng-template #noFileSelected>Nenhum arquivo selecionado.</ng-template>
         </div>
 
-        <div class="send-button">
-          <button
-            type="submit"
-            id="send"
-            form="form-new-project"
-            value="Submit"
-            mat-fab
-            extended
-            color="primary"
-            (click)="this.confirm()"
-          >
-            <mat-icon>cloud_upload</mat-icon>
-            Cadastrar
-          </button>
+        <div *ngIf="!projectIdExists">
+          <div class="send-button">
+            <button
+              type="submit"
+              id="send"
+              form="form-new-project"
+              value="Submit"
+              mat-fab
+              extended
+              color="primary"
+              (click)="this.createProject()"
+            >
+              <mat-icon>cloud_upload</mat-icon>
+              Cadastrar
+            </button>
+          </div>
         </div>
+
+        <div *ngIf="projectIdExists">
+          <div class="send-button">
+            <button
+              type="submit"
+              id="send"
+              form="form-new-project"
+              value="Submit"
+              mat-fab
+              extended
+              color="primary"
+              (click)="this.updateProject()"
+            >
+              <mat-icon>cloud_upload</mat-icon>
+              Atualizar
+            </button>
+          </div>
+        </div>
+
       </form>
     </div>
 
