@@ -5,7 +5,85 @@
         </div>
     </div>
     <div class="info">
-        <div class="curriculum">
+
+        <div class="info-content">
+            <div class="title">
+                <div class="title-name">
+                    <img src="./../../../assets/icons/curriculum_icon.svg" alt="">
+                    <span id="title">Currículo</span>
+                </div> 
+            </div>
+            <div class="curriculum-info" *ngIf="curriculum">
+
+                <div class="curriculum-item">
+                    <span class="title-curriculum">Nome:</span>
+                    <span class="body-curriculum">{{ curriculum[0].name }}</span>
+                </div>
+            
+                <div class="curriculum-item">
+                    <span class="title-curriculum">Email:</span>
+                    <span class="body-curriculum">{{ curriculum[0].email }}</span>
+                </div>
+
+                <div class="curriculum-item">
+                    <span class="title-curriculum">Telefone:</span>
+                    <span class="body-curriculum">{{ curriculum[0].phoneNumber }}</span>
+                </div>
+
+                <div class="curriculum-item">
+                    <span class="title-curriculum">Data de Nascimento:</span>
+                    <span class="body-curriculum">{{ curriculum[0].birthDate }}</span>
+                </div>
+
+                <div class="curriculum-item">
+                    <span class="title-curriculum">Logradouro:</span>
+                    <span class="body-curriculum">{{ curriculum[0].street }}</span>
+                </div>
+
+                <div class="curriculum-item">
+                    <span class="title-curriculum">Número:</span>
+                    <span class="body-curriculum">{{ curriculum[0].streetNumber }}</span>
+                </div>
+
+                <div class="curriculum-item">
+                    <span class="title-curriculum">Bairro:</span>
+                    <span class="body-curriculum">{{ curriculum[0].district }}</span>
+                </div>
+
+                <div class="curriculum-item">
+                    <span class="title-curriculum">Cidade:</span>
+                    <span class="body-curriculum">{{ curriculum[0].city }}</span>
+                </div>
+
+                <div class="curriculum-item">
+                    <span class="title-curriculum">Estado(UF):</span>
+                    <span class="body-curriculum">{{ curriculum[0].state }}</span>
+                </div>
+
+                <div class="curriculum-item">
+                    <span class="title-curriculum">Objetivo Profissional:</span>
+                    <span class="body-curriculum">{{ curriculum[0].professionalObjective }}</span>
+                </div>
+
+                <div class="curriculum-item">
+                    <span class="title-curriculum">Experiências:</span>
+                    <span class="body-curriculum">{{ curriculum[0].professionalExperience }}</span>
+                </div>
+
+                <div class="curriculum-item">
+                    <span class="title-curriculum">Cursos e Certificações:</span>
+                    <span class="body-curriculum">{{ curriculum[0].coursesAndCertifications }}</span>
+                </div>
+
+                <div class="curriculum-item">
+                    <span class="title-curriculum">Idiomas:</span>
+                    <span class="body-curriculum">{{ curriculum[0].languages }}</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="info-content">
             <div class="title">
                 <div class="title-name">
                     <img src="./../../../assets/icons/project_icon.svg" alt="">

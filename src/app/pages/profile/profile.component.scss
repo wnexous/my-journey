@@ -27,11 +27,11 @@
     padding: 20px;
 }
 
-.curriculum {
+.info-content {
     display: flex;
     flex-direction: column;
     padding: 0.5rem 1rem;
-    margin: 60px 30px 30px 30px;
+    margin: 60px 30px 0px 30px;
     width: 100%;
     overflow-y: auto;
     position: relative;
@@ -44,6 +44,33 @@
 .info {
     display: flex;
     flex-direction: column;
+}
+
+.curriculum-info {
+    margin-left: 20px;
+    max-width: 530px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title-curriculum {
+    font-family: IBM-Plex-Mono-bold;
+    font-size: 16px;
+    color: #9A9A9A;
+    padding: 10px;
+}
+
+.body-curriculum {
+    font-family: IBM-Plex-Mono-medium;
+    font-size: 14px;
+    color: #000;
+}
+
+.curriculum-item {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .organize-cards {
