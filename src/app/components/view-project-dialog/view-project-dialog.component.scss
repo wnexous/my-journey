@@ -24,19 +24,18 @@
 
 .close-button {
     border-radius: 6px;
-    background-color: inherit;
-    color: #000;
+    background-color: #A576BC;
+    color: #fff;
 	border: none;
-	padding: 8px;
+	padding: 12px;
     font-size: 16px;
-	font-family: IBM-Plex-Mono-bold;
+    font-family: IBM-Plex-Mono;
 	cursor: pointer;
 	outline: inherit;
 }
 
 .close-button:hover {
-    color: #fff;
-    background-color: #A576BC;
+    background-color: #c68ee1;
 }
 
 mat-dialog-actions {
