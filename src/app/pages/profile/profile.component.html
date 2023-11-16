@@ -7,12 +7,27 @@
     <div class="info">
         <div class="curriculum">
             <div class="title">
-                <img src="./../../../assets/icons/curriculum_icon.svg" alt="">
-                <span id="title">Projetos</span>
+                <div class="title-name">
+                    <img src="./../../../assets/icons/project_icon.svg" alt="">
+                    <span id="title">Projetos</span>
+                </div>
+                    <button 
+                    class="new-project"
+                    (click)="this.redirectCreateProject()">
+                        Novo projeto
+                    </button>            
             </div>
-            <div class="organize-cards" *ngFor="let project of projects">
-                <app-card [projectData]="project"></app-card>
-            </div>
+            <!-- Verifica se a lista de projetos existe e tem pelo menos um elemento -->
+            <ng-container *ngIf="projects && projects.length > 0; else noProjects">
+                <div class="organize-cards" *ngFor="let project of projects">
+                    <app-card [projectData]="project"></app-card>
+                </div>
+            </ng-container>
+
+            <!-- Mensagem quando não há projetos -->
+            <ng-template #noProjects>
+                <span>Não há projetos cadastrados.</span>
+            </ng-template>
         </div>
     </div>
 </div>
