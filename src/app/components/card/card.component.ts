@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialog } from '@angular/material/dialog';
+import { ViewProjectDialogComponent } from '../view-project-dialog/view-project-dialog.component';
 import {NgIf} from '@angular/common';
 
 import { UploadService } from 'src/app/service/project/upload.service';
@@ -18,7 +20,8 @@ export class CardComponent {
 
   constructor(
     private router:Router,
-    private uploadService:UploadService
+    private uploadService:UploadService,
+    public dialog: MatDialog
     ) {}
 
   @Input() projectData: any; 
@@ -61,6 +64,17 @@ export class CardComponent {
       // Código a ser executado se o usuário clicar em "Cancelar"
       console.log('Exclusão cancelada pelo usuário.');
     }
-  }  
+  }
+
+  openViewProjectDialog() {
+    this.dialog.open(ViewProjectDialogComponent, {
+      width: '700px',
+      data: {
+        title: this.projectData.title,
+        description: this.projectData.description,
+        image: this.projectData.image
+      },
+    });
+  }
 
 }
