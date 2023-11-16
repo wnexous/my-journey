@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UploadService } from 'src/app/service/project/upload.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -9,10 +9,13 @@ import { UploadService } from 'src/app/service/project/upload.service';
 export class ProfileComponent {
   public projects: any[] = [];
 
-  constructor(private uploadService: UploadService) {}
+  constructor(
+    private uploadService: UploadService,
+    private router:Router) {}
 
   ngOnInit(): void {
     this.getProjects();
+    console.log(this.getProjects())
   }
 
   private getProjects(): void {
@@ -25,4 +28,9 @@ export class ProfileComponent {
       }
     );
   }
+
+  public redirectCreateProject() {
+    this.router.navigate(['/create-project'])
+  }
+
 }
