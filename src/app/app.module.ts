@@ -35,6 +35,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { MatButtonModule } from '@angular/material/button';
 import { EditButtonComponent } from './components/curriculum-buttons/edit-button.component';
+import { HomeIsLoggedComponent } from './pages/home-is-logged/home-is-logged.component';
 
 registerLocaleData(localePT);
 
@@ -51,7 +52,7 @@ registerLocaleData(localePT);
     MenuHomeIsNotLoggedComponent, 
     MenuIsLoggedComponent, 
     ProfileComponent, 
-    ViewProjectDialogComponent, 
+    ViewProjectDialogComponent, HomeIsLoggedComponent, 
   ],
   imports: [
     BrowserModule,
