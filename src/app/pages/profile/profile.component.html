@@ -4,7 +4,10 @@
             <div class="title-name">
                 <img src="./../../../assets/icons/curriculum_icon.svg" alt="">
                 <span id="title">Currículo</span>
-            </div> 
+            </div>
+            <ng-container *ngIf="curriculum && curriculum.length > 0">
+                <app-edit-button></app-edit-button>
+            </ng-container>
         </div>
         <ng-container class="curriculum-info" *ngIf="curriculum && curriculum.length > 0; else noCurriculum">
 
@@ -78,7 +81,7 @@
             <span id="noItem">Currículo não cadastrado</span>
             <button 
             class="new-curriculum"
-            (click)="this.redirectCreateProject()">
+            (click)="this.redirectCurriculum()">
                 Cadastrar
             </button> 
         </ng-template>
