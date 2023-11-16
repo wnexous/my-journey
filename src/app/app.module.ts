@@ -33,6 +33,9 @@ import { CardComponent } from './components/card/card.component';
 import { ViewProjectDialogComponent } from './components/view-project-dialog/view-project-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
+import { MatButtonModule } from '@angular/material/button';
+import { EditButtonComponent } from './components/curriculum-buttons/edit-button.component';
+
 registerLocaleData(localePT);
 
 @NgModule({
@@ -66,6 +69,8 @@ registerLocaleData(localePT);
     SigninComponent,
     CardComponent,
     MatDialogModule,
+    MatButtonModule,
+    EditButtonComponent
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-br' }],
   bootstrap: [AppComponent]
