@@ -22,8 +22,19 @@ button {
   margin: 5px;
 }
 
+.title-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 250px;
+}
+
 .text {
-  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Número de linhas a serem exibidas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   max-width: 250px;
 }
 
