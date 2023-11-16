@@ -36,13 +36,12 @@ button {
 .view-button {
   color: #fff;
   text-align: center;
-  font-family: IBM Plex Mono;
+  font-family: IBM-Plex-Mono;
   font-size: 12px;
 }
 
-/* Estilo do texto do botão "Ver Projeto" quando o mouse passa por cima */
 .view-button:hover {
-  color: #fff; /* Cor desejada do texto do botão "Ver Projeto" quando o mouse passa por cima */
+  color: #fff;
   background-color: #A576BC;
 
 }
