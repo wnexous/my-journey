@@ -83,11 +83,10 @@ public updateFile(title: string, description: string, image: string) {
 
 }
 
-public deleteFile() {
+public deleteFile(projectId: string) {
 
   const token = window.localStorage.getItem('token')
   const uuid: any = window.localStorage.getItem('uuid')
-  const projectId = window.localStorage.getItem('projectId')
 
   const httpOptions = {
     headers: new HttpHeaders({
