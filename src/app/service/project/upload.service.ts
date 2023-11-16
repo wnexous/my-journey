@@ -77,8 +77,6 @@ public updateFile(title: string, description: string, image: string) {
     image
   })
 
-  console.log('AQUI :D')
-
   return this.httpClient.post('http://localhost:5500/api/project?' + params.toString(), image, httpOptions);
 
 }
