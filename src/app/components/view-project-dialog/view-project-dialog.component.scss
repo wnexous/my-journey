@@ -1,0 +1,44 @@
+.center-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    margin: 16px;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
+  
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.description, mat-dialog-title {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.close-button {
+    border-radius: 6px;
+    background-color: inherit;
+    color: #000;
+	border: none;
+	padding: 8px;
+    font-size: 16px;
+	font-family: IBM-Plex-Mono-bold;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.close-button:hover {
+    color: #fff;
+    background-color: #A576BC;
+}
+
+mat-dialog-actions {
+    justify-content: center;
+}

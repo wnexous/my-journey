@@ -29,6 +29,10 @@ import localePT from '@angular/common/locales/pt';
 import { MenuIsLoggedComponent } from './components/menu-is-logged/menu-is-logged.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { CardComponent } from './components/card/card.component';
+
+import { ViewProjectDialogComponent } from './components/view-project-dialog/view-project-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 registerLocaleData(localePT);
 
 @NgModule({
@@ -44,6 +48,7 @@ registerLocaleData(localePT);
     MenuHomeIsNotLoggedComponent, 
     MenuIsLoggedComponent, 
     ProfileComponent, 
+    ViewProjectDialogComponent, 
   ],
   imports: [
     BrowserModule,
@@ -59,7 +64,8 @@ registerLocaleData(localePT);
     CreateProjectComponent,
     SignupComponent,
     SigninComponent,
-    CardComponent
+    CardComponent,
+    MatDialogModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-br' }],
   bootstrap: [AppComponent]
