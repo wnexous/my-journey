@@ -36,7 +36,6 @@ export class ProfileComponent {
     this.curriculumService.getCurriculum().subscribe(
       (curriculum: any) => {
         this.curriculum = curriculum;
-        console.log(curriculum)
       },      
       (error) => {
         console.error('Erro ao obter dados do curriculo:', error);
@@ -46,6 +45,10 @@ export class ProfileComponent {
 
   public redirectCreateProject() {
     this.router.navigate(['/create-project'])
+  }
+
+  public redirectCurriculum() {
+    this.router.navigate(['/user-resume'])
   }
 
 }
