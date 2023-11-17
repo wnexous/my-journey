@@ -38,3 +38,8 @@ mat-dialog-actions {
 mat-error {
     color: red; /* ou a cor desejada */
 }
+
+.character-count {
+    display: flex;
+    flex-direction: row-reverse;
+}

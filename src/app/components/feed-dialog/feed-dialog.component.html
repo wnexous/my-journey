@@ -15,14 +15,16 @@
             <textarea
             matInput
             formControlName="description"
+            maxlength="900"
             >
             </textarea>
-            <mat-error
-            *ngIf="feedForm.get('description')?.hasError('required')"
-            >
-            Mensagem é <strong>obrigatório</strong>
+
+            <mat-error *ngIf="feedForm.get('description')?.hasError('required')">
+                Mensagem é <strong>obrigatório</strong>
             </mat-error>
         </mat-form-field>
+
+        <div class="character-count">{{ characterCount }}</div>
 
         <mat-dialog-actions>
 

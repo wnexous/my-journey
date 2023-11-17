@@ -22,7 +22,18 @@ export class FeedDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.feedForm = this.formBuilder.group({
-      description: ['', Validators.required],
+      description: ['', [Validators.required]],
     });
   }
+
+  get descriptionControl() {
+    return this.feedForm.get('description');
+  }
+
+  get characterCount() {
+    const currentLength = this.descriptionControl?.value ? this.descriptionControl.value.length : 0;
+    const maxLength = this.descriptionControl?.getError('maxlength')?.requiredLength || 900;
+    return `${currentLength}/${maxLength}`;
+  }
+
 }
