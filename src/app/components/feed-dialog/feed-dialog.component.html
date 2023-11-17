@@ -15,7 +15,6 @@
             <textarea
             matInput
             formControlName="description"
-            placeholder="Ex. Meu projeto conta a história de..."
             >
             </textarea>
             <mat-error
@@ -24,20 +23,23 @@
             Mensagem é <strong>obrigatório</strong>
             </mat-error>
         </mat-form-field>
+
+        <mat-dialog-actions>
+
+            <button 
+            class="confirm-button"
+            mat-button 
+            mat-dialog-close
+            >Publicar</button>
+        
+            <button 
+            class="close-button"
+            mat-button 
+            mat-dialog-close
+            >Fechar</button>
+        </mat-dialog-actions>
+
     </form>
 
 </mat-dialog-content>
 
-<mat-dialog-actions>
-    <button 
-    class="confirm-button"
-    mat-button 
-    mat-dialog-close
-    >Publicar</button>
-
-    <button 
-    class="close-button"
-    mat-button 
-    mat-dialog-close
-    >Fechar</button>
-</mat-dialog-actions>

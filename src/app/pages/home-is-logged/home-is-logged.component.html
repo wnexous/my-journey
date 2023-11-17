@@ -1,1 +1,36 @@
-<button mat-button (click)="this.openFeedDialog()">Open dialog</button>
+<div class="create-feed">
+    <div class="feed-intro">
+        <span id="intro-user-name">Olá, Nome do Usuário!</span>
+        <button 
+        class="feedButton"
+        mat-button 
+        (click)="this.openFeedDialog()">
+        <mat-icon> forum</mat-icon>
+        Adicione uma publicação</button>
+    </div>
+</div>
+
+<div class="info">
+    <div class="info-content">
+        <div class="title">
+            <div class="title-name">
+                <img src="./../../../assets/icons/feed_icon.svg" alt="">
+                <span id="title">Publicações</span>
+            </div>       
+        </div>
+        <!-- Verifica se a lista de projetos existe e tem pelo menos um elemento
+        <ng-container *ngIf="projects && projects.length > 0; else noProjects">
+            <div class="organize-cards" *ngFor="let project of projects">
+                <app-card [projectData]="project"></app-card>
+            </div>
+        </ng-container> -->
+    
+        <!-- Mensagem quando não há projetos
+        <ng-template #noProjects>
+            <span id="noItem">Não há projetos cadastrados</span>
+        </ng-template> -->
+    </div>
+</div>
+
+
+

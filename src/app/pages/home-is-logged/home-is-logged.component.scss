@@ -1,0 +1,72 @@
+.feedButton {
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 400px;
+}
+
+.create-feed {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin: 1rem;
+}
+
+.feed-intro {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+#intro-user-name {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    font-size: 20px;
+    font-family: IBM-Plex-Mono-medium;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-name {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    margin: 20px;
+}
+
+#title {
+    font-family: IBM-Plex-Mono-bold;
+    font-size: 24px;
+    color: #9A9A9A;
+    padding: 20px;
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    margin: 30px 30px 30px 30px;
+    width: 100%;
+    overflow-y: auto;
+    position: relative;
+    flex-shrink: 0;
+    border-radius: 16px;
+    background: #FFF;
+    box-shadow: 0px 4px 64px 0px rgba(0, 0, 0, 0.08);
+    max-width: 800px;
+    max-height: 60vh;
+}
+
+.info {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
