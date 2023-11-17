@@ -37,6 +37,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { EditButtonComponent } from './components/curriculum-buttons/edit-button.component';
 import { HomeIsLoggedComponent } from './pages/home-is-logged/home-is-logged.component';
 import { FeedDialogComponent } from './components/feed-dialog/feed-dialog.component';
+import { FeedCardComponent } from './components/feed-card/feed-card.component';
 
 registerLocaleData(localePT);
 
@@ -74,7 +75,8 @@ registerLocaleData(localePT);
     MatDialogModule,
     MatButtonModule,
     EditButtonComponent,
-    FeedDialogComponent
+    FeedDialogComponent,
+    FeedCardComponent,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-br' }],
   bootstrap: [AppComponent]

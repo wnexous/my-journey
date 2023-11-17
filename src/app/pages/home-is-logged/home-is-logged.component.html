@@ -18,11 +18,14 @@
                 <span id="title">Publicações</span>
             </div>       
         </div>
+
+        <div class="organize-cards">
+            <app-feed-card></app-feed-card>
+        </div>
+
         <!-- Verifica se a lista de projetos existe e tem pelo menos um elemento
         <ng-container *ngIf="projects && projects.length > 0; else noProjects">
-            <div class="organize-cards" *ngFor="let project of projects">
-                <app-card [projectData]="project"></app-card>
-            </div>
+
         </ng-container> -->
     
         <!-- Mensagem quando não há projetos
