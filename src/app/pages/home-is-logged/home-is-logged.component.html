@@ -19,19 +19,15 @@
             </div>       
         </div>
 
-        <div class="organize-cards">
-            <app-feed-card></app-feed-card>
-        </div>
+        <ng-container *ngIf="feeds && feeds.length > 0; else noComments">
+            <div class="organize-cards" *ngFor="let feed of feeds">
+                <app-feed-card [feedData]="feed"></app-feed-card>
+            </div>
+        </ng-container>
 
-        <!-- Verifica se a lista de projetos existe e tem pelo menos um elemento
-        <ng-container *ngIf="projects && projects.length > 0; else noProjects">
-
-        </ng-container> -->
-    
-        <!-- Mensagem quando não há projetos
-        <ng-template #noProjects>
-            <span id="noItem">Não há projetos cadastrados</span>
-        </ng-template> -->
+        <ng-template #noComments>
+            <span id="noItem">Não há comentários cadastrados</span>
+        </ng-template>
     </div>
 </div>
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FeedDialogComponent } from 'src/app/components/feed-dialog/feed-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { FeedService } from 'src/app/service/feed/feed.service';
 
 @Component({
   selector: 'app-home-is-logged',
@@ -8,14 +9,31 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./home-is-logged.component.scss']
 })
 export class HomeIsLoggedComponent {
+  public feeds: any[] = [];
 
   constructor(
+    private feedService: FeedService,
     public dialog: MatDialog
     ) {}
+
+    ngOnInit(): void {
+      this.getMessages();
+    }
 
   openFeedDialog() {
     this.dialog.open(FeedDialogComponent, {
       width: '700px'
     });
+  }
+
+  getMessages() {
+    this.feedService.getMessages().subscribe(
+      (feeds: any) => {
+        this.feeds = feeds;
+      },
+      (error) => {
+        console.error('Erro ao obter dados dos comentários:', error);
+      }
+    );
   }
 }
