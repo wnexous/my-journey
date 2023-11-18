@@ -40,7 +40,7 @@
             type="email"
             id="email"
             name="email"
-            placeholder="digite aqui seu email"
+            placeholder="Digite seu email"
             matInput formControlName="email"
           />
           <mat-error *ngIf="signinForm.get('email')?.hasError('required')">
@@ -59,17 +59,13 @@
             type="password"
             id="password"
             name="password"
-            placeholder="coxinha123"
+            placeholder="Digite sua senha"
             matInput formControlName="password"
           />
           <mat-error *ngIf="signinForm.get('password')?.hasError('required')">
             Senha é <strong>obrigatório</strong>
           </mat-error>
           </mat-form-field>
-
-          <span>
-            <a href="#" class="form-forgot-password">Esqueceu sua senha?</a>
-          </span>
 
         <span class="form-button-content">
           <a class="form-button-content__create-account" href="/signup">
