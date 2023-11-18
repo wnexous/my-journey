@@ -40,7 +40,7 @@ export class SigninComponent {
           window.localStorage.setItem('uuid', resp[0].uuid)
           window.localStorage.setItem('email', resp[0].email)
 
-          this.router.navigate(['/']) // adicionar a página home com usuário logado quando houver
+          this.router.navigate(['/home'])
           .then(() => {
             window.location.reload()
           })
