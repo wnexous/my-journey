@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,6 +18,8 @@ export class FeedCardComponent {
     public dialog: MatDialog
     ) {}
 
+    @Input() feedData: any; 
+    
     updatedFeedDialog() {
       this.dialog.open(FeedDialogComponent, {
         width: '700px',
