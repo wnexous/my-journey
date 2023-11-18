@@ -32,13 +32,23 @@
             class="confirm-button"
             mat-button 
             mat-dialog-close
+            *ngIf="!isFeedIdPresent"
             (click)="this.createMessage()"
             >Publicar</button>
+
+            <button 
+            class="confirm-button"
+            mat-button 
+            mat-dialog-close
+            *ngIf="isFeedIdPresent"
+            (click)="this.updateMessage()"
+            >Atualizar</button>
         
             <button 
             class="close-button"
             mat-button 
             mat-dialog-close
+            (click)="this.removeIdIfExists()"
             >Fechar</button>
         </mat-dialog-actions>
 

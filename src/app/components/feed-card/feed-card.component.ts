@@ -32,6 +32,9 @@ export class FeedCardComponent {
     }
     
     updatedFeedDialog() {
+      const { _id } = this.feedData;
+      window.localStorage.setItem('feedId', _id)
+
       this.dialog.open(FeedDialogComponent, {
         width: '700px',
         data: {

@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 })
 export class FeedDialogComponent {
   feedForm: FormGroup;
+  isFeedIdPresent: boolean = false;
 
   constructor(
     private feedService: FeedService,    
@@ -33,6 +34,8 @@ export class FeedDialogComponent {
     this.feedForm = this.formBuilder.group({
       message: [this.data.message || '', [Validators.required]],
     });
+
+    this.isFeedIdPresent = !!window.localStorage.getItem('feedId');
   }
 
   get messageControl() {
@@ -61,6 +64,35 @@ export class FeedDialogComponent {
           window.location.reload()
         })
       })
+    }
+  }
+
+  async updateMessage() {
+    if(!this.feedForm) {
+      alert('O campo não deve ser vazio')
+    } else {
+      const message = this.feedForm.get('message')!.value
+      const feedId = window.localStorage.getItem('feedId')!;
+
+      Promise.all([
+        this.feedService.deleteMessages(feedId).subscribe(),
+        this.feedService.createMessage(message).subscribe(() => {
+          alert('Mensagem atualizada com sucesso!')
+
+          window.localStorage.removeItem('feedId')
+
+          this.router.navigate(['/home'])
+          .then(() => {
+            window.location.reload()
+          })
+        })
+      ])
+    }
+  }
+
+  removeIdIfExists() {
+    if (localStorage.getItem('feedId')) {
+      localStorage.removeItem('feedId');
     }
   }
 
