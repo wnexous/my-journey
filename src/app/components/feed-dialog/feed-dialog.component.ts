@@ -7,7 +7,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { Validators, FormsModule, ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms';
 import { FeedService } from 'src/app/service/feed/feed.service';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-feed-dialog',
   templateUrl: './feed-dialog.component.html',
@@ -27,6 +26,12 @@ export class FeedDialogComponent {
   ) {
     this.feedForm = this.formBuilder.group({
       message: ['', [Validators.required]],
+    });
+  }
+
+  ngOnInit() {
+    this.feedForm = this.formBuilder.group({
+      message: [this.data.message || '', [Validators.required]],
     });
   }
 

@@ -23,6 +23,9 @@ export class FeedCardComponent {
     updatedFeedDialog() {
       this.dialog.open(FeedDialogComponent, {
         width: '700px',
+        data: {
+          message: this.feedData.message
+        }
       });
     }
 
