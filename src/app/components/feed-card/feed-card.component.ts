@@ -14,11 +14,17 @@ import { FeedDialogComponent } from '../feed-dialog/feed-dialog.component';
   imports: [MatCardModule, MatButtonModule, MatIconModule, NgIf],
 })
 export class FeedCardComponent {
+  email: any;
+
   constructor(
     public dialog: MatDialog
     ) {}
 
-    @Input() feedData: any; 
+    @Input() feedData: any;
+
+    ngOnInit() {
+      this.email = localStorage.getItem('email')
+    }
     
     updatedFeedDialog() {
       this.dialog.open(FeedDialogComponent, {
