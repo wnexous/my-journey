@@ -39,6 +39,7 @@ export class SigninComponent {
           window.localStorage.setItem('token', resp[0].token)
           window.localStorage.setItem('uuid', resp[0].uuid)
           window.localStorage.setItem('email', resp[0].email)
+          window.localStorage.setItem('name', resp[0].name)
 
           this.router.navigate(['/home'])
           .then(() => {

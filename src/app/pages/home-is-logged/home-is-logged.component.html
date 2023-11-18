@@ -1,6 +1,6 @@
 <div class="create-feed">
     <div class="feed-intro">
-        <span id="intro-user-name">Olá, Nome do Usuário!</span>
+        <span id="intro-user-name" *ngIf="userName">Olá, {{userName}}!</span>
         <button 
         class="feedButton"
         mat-button 

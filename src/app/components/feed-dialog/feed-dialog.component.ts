@@ -54,8 +54,6 @@ export class FeedDialogComponent {
     } else {
       const message = this.feedForm.get('message')!.value
 
-      console.log(message)
-
       this.feedService.createMessage(message).subscribe(() => {
         alert('Mensagem enviada com sucesso!')
         

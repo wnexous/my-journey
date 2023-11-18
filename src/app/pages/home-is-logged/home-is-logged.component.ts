@@ -10,6 +10,7 @@ import { FeedService } from 'src/app/service/feed/feed.service';
 })
 export class HomeIsLoggedComponent {
   public feeds: any[] = [];
+  userName: string;
 
   constructor(
     private feedService: FeedService,
@@ -17,7 +18,8 @@ export class HomeIsLoggedComponent {
     ) {}
 
     ngOnInit(): void {
-      this.getMessages();
+      this.getMessages()
+      this.userName = window.localStorage.getItem('name') ?? ''
     }
 
   openFeedDialog() {
@@ -35,5 +37,9 @@ export class HomeIsLoggedComponent {
         console.error('Erro ao obter dados dos comentários:', error);
       }
     );
+  }
+
+  getUserName() {
+
   }
 }
