@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FeedDialogComponent } from 'src/app/components/feed-dialog/feed-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { FeedService } from 'src/app/service/feed/feed.service';
+import { AccountService } from 'src/app/service/account/account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-is-logged',
@@ -13,11 +15,18 @@ export class HomeIsLoggedComponent {
   userName: string;
 
   constructor(
+    private accountService: AccountService,
     private feedService: FeedService,
+    private router: Router,
     public dialog: MatDialog
     ) {}
 
     ngOnInit(): void {
+
+      if (!this.accountService.LoggedIn()) {
+        this.router.navigate(['/signin']);
+      }
+
       this.getMessages()
       this.userName = window.localStorage.getItem('name') ?? ''
     }

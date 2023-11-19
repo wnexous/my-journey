@@ -1,4 +1,4 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { Validators, FormsModule, ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms';
 import { NgIf } from '@angular/common';
@@ -10,6 +10,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 
 import { UploadService } from 'src/app/service/project/upload.service';
+import { AccountService } from 'src/app/service/account/account.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -29,6 +30,7 @@ export class CreateProjectComponent {
   constructor(
     private formBuilder: FormBuilder,
     private uploadService: UploadService,
+    private accountService: AccountService,
     private router:Router,
     private activatedRoute:ActivatedRoute
   ) {
@@ -40,6 +42,11 @@ export class CreateProjectComponent {
   }
 
   ngOnInit() {
+
+    if (!this.accountService.LoggedIn()) {
+      this.router.navigate(['/signin']);
+    }
+
     this.changeTextTitleadButton();
 
     this.activatedRoute.params.subscribe(params => {

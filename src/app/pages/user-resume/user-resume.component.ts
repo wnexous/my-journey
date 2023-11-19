@@ -14,6 +14,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 
 import { CurriculumService } from 'src/app/service/curriculum/curriculum.service';
+import { AccountService } from 'src/app/service/account/account.service';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -27,6 +29,7 @@ export class UserResumeComponent {
   createResumeForm: FormGroup;
 
   constructor(
+    private accountService: AccountService,
     private formBuilder: FormBuilder, 
     private curriculumService: CurriculumService,
     private router: Router) {
@@ -45,6 +48,16 @@ export class UserResumeComponent {
       coursesAndCertifications: [''],
       languages: [''],
     });
+  }
+
+  ngOnInit() {
+
+    if (!this.accountService.LoggedIn()) {
+      this.router.navigate(['/signin']);
+    }
+    
+    this.getUser();
+    this.getCurriculum();
   }
 
   public getUser() {
@@ -92,11 +105,6 @@ export class UserResumeComponent {
         console.log("Erro ao obter campo", error);
       }
     );
-  }
-
-  ngOnInit() {
-    this.getUser();
-    this.getCurriculum();
   }
   
   OnSubmit() {

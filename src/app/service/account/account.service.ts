@@ -16,4 +16,8 @@ export class AccountService {
       this.isLoggedIn = true;
     }
   }
+
+  public LoggedIn(): boolean {
+    return this.isLoggedIn;
+  }
 }

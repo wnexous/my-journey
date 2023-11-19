@@ -5,6 +5,7 @@ import {NgIf} from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { Router } from '@angular/router';
+import { AccountService } from 'src/app/service/account/account.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -18,6 +19,7 @@ export class SignupComponent {
   constructor(
     private formBuilder: FormBuilder,
     private signupService: SignupService,
+    private accountService: AccountService,
     private router:Router)
     {
       this.signupForm = this.formBuilder.group({
@@ -26,6 +28,12 @@ export class SignupComponent {
         password: ['', Validators.required],
       });
     }
+
+  ngOnInit() {
+    if (this.accountService.LoggedIn()) {
+      this.router.navigate(['/home']);
+    }
+  }
 
   onSubmit() {
     if(this.signupForm.valid) {

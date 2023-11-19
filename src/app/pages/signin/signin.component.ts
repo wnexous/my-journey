@@ -5,6 +5,7 @@ import {NgIf} from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { Router } from '@angular/router';
+import { AccountService } from 'src/app/service/account/account.service';
 
 @Component({
   selector: 'app-signin',
@@ -17,6 +18,7 @@ export class SigninComponent {
   signinForm: FormGroup;
 
   constructor(
+    private accountService: AccountService,
     private formBuilder: FormBuilder,
     private signinService: SigninService,
     private router:Router)
@@ -26,6 +28,12 @@ export class SigninComponent {
         password: ['', Validators.required],
       });
     }
+
+  ngOnInit() {
+    if (this.accountService.LoggedIn()) {
+      this.router.navigate(['/home']);
+    }
+  }
 
   onSubmit() {
     if(this.signinForm.valid) {

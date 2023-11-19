@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UploadService } from 'src/app/service/project/upload.service';
 import { CurriculumService } from 'src/app/service/curriculum/curriculum.service';
+import { AccountService } from 'src/app/service/account/account.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-profile',
@@ -12,11 +13,17 @@ export class ProfileComponent {
   public curriculum: any
 
   constructor(
+    private accountService: AccountService,
     private uploadService: UploadService,
     private curriculumService: CurriculumService,
     private router:Router) {}
 
   ngOnInit(): void {
+    
+    if (!this.accountService.LoggedIn()) {
+      this.router.navigate(['/signin']);
+    }
+
     this.getProjects();
     this.getCurriculum();
   }
