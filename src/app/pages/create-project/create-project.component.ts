@@ -54,27 +54,36 @@ export class CreateProjectComponent {
 
   async onFileChange(event: Event) {
     const inputElement = event.target as HTMLInputElement;
-
+  
     if (inputElement && inputElement.files && inputElement.files.length > 0) {
-
-      // instancia leitor de arquivos
-      const fileRender = new FileReader()
-      const fileName = inputElement.files[0].name
-
-      // le a imagem de files 
-      fileRender.readAsDataURL(inputElement.files[0])
-
-      // onload recebe uma callback quando a imagem for carregada. o fileRender.result contem a base64 em string
+      const fileRender = new FileReader();
+      const file = inputElement.files[0];
+      const fileName = file.name;
+  
+      console.log('File Type:', file.type);
+  
+      fileRender.readAsDataURL(file);
+  
       fileRender.onload = () => {
-        this.fileInBase64 = fileRender.result!.toString()
         this.selectedFileName = fileName;
-      }
-      
+
+        const img = new Image();
+        img.src = fileRender.result as string;
+  
+        img.onload = () => {
+          const elem = document.createElement('canvas');
+          elem.width = 300;
+          elem.height = 300;
+          const ctx = elem.getContext('2d');
+          ctx?.drawImage(img, 0, 0, 300, 300);
+          this.fileInBase64 = ctx?.canvas.toDataURL() || '';
+        }
+      };
     } else {
-      console.log("No files selected");
+      console.log('No files selected');
       this.selectedFileName = null;
     }
-  }
+  }  
 
   async createProject() {
     if (!this.createProjetForm.valid || !this.fileInBase64) {
