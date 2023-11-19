@@ -38,6 +38,8 @@ import { EditButtonComponent } from './components/curriculum-buttons/edit-button
 import { HomeIsLoggedComponent } from './pages/home-is-logged/home-is-logged.component';
 import { FeedDialogComponent } from './components/feed-dialog/feed-dialog.component';
 import { FeedCardComponent } from './components/feed-card/feed-card.component';
+import { ProjectsComponent } from './pages/projects/projects.component';
+import { ProjectCardComponent } from './components/project-card/project-card.component';
 
 registerLocaleData(localePT);
 
@@ -55,7 +57,8 @@ registerLocaleData(localePT);
     MenuIsLoggedComponent, 
     ProfileComponent, 
     ViewProjectDialogComponent, 
-    HomeIsLoggedComponent,
+    HomeIsLoggedComponent, 
+    ProjectsComponent, 
   ],
   imports: [
     BrowserModule,
@@ -77,6 +80,7 @@ registerLocaleData(localePT);
     EditButtonComponent,
     FeedDialogComponent,
     FeedCardComponent,
+    ProjectCardComponent,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-br' }],
   bootstrap: [AppComponent]

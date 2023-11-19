@@ -10,6 +10,21 @@ export class UploadService {
    private httpClient: HttpClient,
  ) { }
 
+ public getAllProjects() {
+  const token = window.localStorage.getItem('token')
+  const uuid: any = window.localStorage.getItem('uuid')
+
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'multipart/form-data',
+      'Authorization': 'Bearer ' + token,
+      'X-Request-Id': uuid,
+    })
+  };
+
+  return this.httpClient.get('http://localhost:5500/api/project?', httpOptions);
+ }
+
  public getProject() {
   const email: any = window.localStorage.getItem('email')
   const token = window.localStorage.getItem('token')
