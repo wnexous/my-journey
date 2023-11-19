@@ -40,6 +40,7 @@ import { FeedDialogComponent } from './components/feed-dialog/feed-dialog.compon
 import { FeedCardComponent } from './components/feed-card/feed-card.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { ProjectCardComponent } from './components/project-card/project-card.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 
 registerLocaleData(localePT);
 
@@ -58,7 +59,7 @@ registerLocaleData(localePT);
     ProfileComponent, 
     ViewProjectDialogComponent, 
     HomeIsLoggedComponent, 
-    ProjectsComponent, 
+    ProjectsComponent, AboutUsComponent, 
   ],
   imports: [
     BrowserModule,

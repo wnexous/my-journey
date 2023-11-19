@@ -8,6 +8,7 @@ import { UserResumeComponent } from './pages/user-resume/user-resume.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { HomeIsLoggedComponent } from './pages/home-is-logged/home-is-logged.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 
 const routes: Routes = [
   { path: "", component: IndexComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: "user-resume", component: UserResumeComponent },
   { path: "profile", component: ProfileComponent },
   { path: "home", component: HomeIsLoggedComponent },
-  { path: "projects", component: ProjectsComponent }
+  { path: "projects", component: ProjectsComponent },
+  { path: "about-us", component: AboutUsComponent },
 ];
 
 @NgModule({
