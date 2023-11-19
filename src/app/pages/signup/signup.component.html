@@ -40,7 +40,7 @@
             type="text"
             id="name"
             name="name"
-            placeholder="digite aqui seu nome completo"
+            placeholder="Digite seu nome completo"
             matInput formControlName="name"
           />
           <mat-error *ngIf="signupForm.get('name')?.hasError('required')">
@@ -55,7 +55,7 @@
             type="email"
             id="email"
             name="email"
-            placeholder="digite aqui seu e-mail"
+            placeholder="Digite seu e-mail"
             matInput formControlName="email" 
           />
           <mat-error *ngIf="signupForm.get('email')?.hasError('required')">
@@ -73,17 +73,13 @@
             type="password"
             id="password"
             name="password"
-            placeholder="coxinha123"
+            placeholder="Digite sua senha"
             matInput formControlName="password" 
           />
           <mat-error *ngIf="signupForm.get('password')?.hasError('required')">
             Senha é <strong>obrigatório</strong>
           </mat-error>
           </mat-form-field>
-        <span class="form-forgot-password">
-          ao clicar em criar conta, você concorda com todos os
-          <a href="#">termos de serviço</a>
-        </span>
 
         <span class="form-button-content">
           <a class="form-button-content__create-account" href="/signin">
