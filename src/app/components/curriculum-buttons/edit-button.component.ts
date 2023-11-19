@@ -47,7 +47,6 @@ export class EditButtonComponent {
     
 
     private getCurriculum() {
-      console.log('aqui')
       this.curriculumService.getCurriculum().subscribe(
         (curriculum: any) => {
           this.curriculum = curriculum;
