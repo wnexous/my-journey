@@ -14,7 +14,6 @@ export class SigninService {
     .set('email', query.email)
     .set('password', query.password)
 
-    console.log('/api/login?' + params.toString())
     return this.httpClient.post('http://localhost:5500/api/login?' + params.toString(), {});
   }
 }

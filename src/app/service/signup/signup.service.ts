@@ -16,7 +16,6 @@ export class SignupService {
     .set('email', query.email)
     .set('password', query.password)
 
-    console.log('/api/user?' + params.toString())
     return this.httpClient.post('http://localhost:5500/api/user?' + params.toString(), {});
   }
 

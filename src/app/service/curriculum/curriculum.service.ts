@@ -60,7 +60,6 @@ export class CurriculumService {
   }
 
   public deleteCurriculum(curriculumId: string) {
-    console.log(curriculumId)
 
     const token = window.localStorage.getItem('token')
     const uuid: any = window.localStorage.getItem('uuid')

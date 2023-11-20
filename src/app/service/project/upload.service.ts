@@ -86,12 +86,6 @@ public updateFile(title: string, description: string, image: string) {
     image = window.localStorage.getItem('image') || ''
   }
 
-  console.log({
-    title,
-    description,
-    image
-  })
-
   return this.httpClient.post('http://localhost:5500/api/project?' + params.toString(), image, httpOptions);
 
 }
