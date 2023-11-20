@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AccountService } from 'src/app/service/account/account.service';
 import { Router } from '@angular/router';
 import { UploadService } from 'src/app/service/project/upload.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-projects',
@@ -31,7 +32,17 @@ export class ProjectsComponent {
           this.projects = projects;
         },
         (error) => {
-          console.error('Erro ao obter dados dos projetos:', error);
+          if(error instanceof HttpErrorResponse) {
+            const errorMessage = error.error.message
+            
+            if(errorMessage) {
+              window.localStorage.clear();
+              this.router.navigate(['/'])
+              .then(() => {
+                window.location.reload()
+              })
+            }
+         }
         }
       );
     }

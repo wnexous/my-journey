@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FeedDialogComponent } from '../feed-dialog/feed-dialog.component';
 import { FeedService } from 'src/app/service/feed/feed.service';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-feed-card',
@@ -55,7 +56,17 @@ export class FeedCardComponent {
             });
           },
           (error) => {
-            console.error('Erro ao excluir a mensagem:', error);
+            if(error instanceof HttpErrorResponse) {
+              const errorMessage = error.error.message
+              
+              if(errorMessage) {
+                window.localStorage.clear();
+                this.router.navigate(['/'])
+                .then(() => {
+                  window.location.reload()
+                })
+              }
+           }
           }
         );
       }

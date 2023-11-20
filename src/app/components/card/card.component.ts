@@ -8,6 +8,7 @@ import {NgIf} from '@angular/common';
 
 import { UploadService } from 'src/app/service/project/upload.service';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-card',
@@ -57,7 +58,17 @@ export class CardComponent {
           });
         },
         (error) => {
-          console.error('Erro ao excluir o projeto:', error);
+          if(error instanceof HttpErrorResponse) {
+            const errorMessage = error.error.message
+            
+            if(errorMessage) {
+              window.localStorage.clear();
+              this.router.navigate(['/'])
+              .then(() => {
+                window.location.reload()
+              })
+            }
+         }
         }
       );
     } else {

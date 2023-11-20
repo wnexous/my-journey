@@ -4,6 +4,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { CurriculumService } from 'src/app/service/curriculum/curriculum.service';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-edit-button',
@@ -39,7 +40,17 @@ export class EditButtonComponent {
             });
           },
           (error) => {
-            console.error('Erro ao excluir o currículo:', error);
+            if(error instanceof HttpErrorResponse) {
+              const errorMessage = error.error.message
+              
+              if(errorMessage) {
+                window.localStorage.clear();
+                this.router.navigate(['/'])
+                .then(() => {
+                  window.location.reload()
+                })
+              }
+           }
           }
         );
       }
@@ -50,9 +61,19 @@ export class EditButtonComponent {
       this.curriculumService.getCurriculum().subscribe(
         (curriculum: any) => {
           this.curriculum = curriculum;
-        },      
+        },
         (error) => {
-          console.error('Erro ao obter dados do curriculo:', error);
+          if(error instanceof HttpErrorResponse) {
+            const errorMessage = error.error.message
+            
+            if(errorMessage) {
+              window.localStorage.clear();
+              this.router.navigate(['/'])
+              .then(() => {
+                window.location.reload()
+              })
+            }
+         }
         }
       )
     }

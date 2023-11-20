@@ -3,6 +3,8 @@ import { UploadService } from 'src/app/service/project/upload.service';
 import { CurriculumService } from 'src/app/service/curriculum/curriculum.service';
 import { AccountService } from 'src/app/service/account/account.service';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -34,7 +36,17 @@ export class ProfileComponent {
         this.projects = projects;
       },
       (error) => {
-        console.error('Erro ao obter dados dos projetos:', error);
+        if(error instanceof HttpErrorResponse) {
+          const errorMessage = error.error.message
+          
+          if(errorMessage) {
+            window.localStorage.clear();
+            this.router.navigate(['/'])
+            .then(() => {
+              window.location.reload()
+            })
+          }
+       }
       }
     );
   }
@@ -43,9 +55,19 @@ export class ProfileComponent {
     this.curriculumService.getCurriculum().subscribe(
       (curriculum: any) => {
         this.curriculum = curriculum;
-      },      
+      },
       (error) => {
-        console.error('Erro ao obter dados do curriculo:', error);
+        if(error instanceof HttpErrorResponse) {
+          const errorMessage = error.error.message
+          
+          if(errorMessage) {
+            window.localStorage.clear();
+            this.router.navigate(['/'])
+            .then(() => {
+              window.location.reload()
+            })
+          }
+       }
       }
     )
   }

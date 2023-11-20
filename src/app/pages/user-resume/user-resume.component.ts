@@ -17,6 +17,7 @@ import { CurriculumService } from 'src/app/service/curriculum/curriculum.service
 import { AccountService } from 'src/app/service/account/account.service';
 
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'user-resume',
@@ -63,7 +64,6 @@ export class UserResumeComponent {
   public getUser() {
     this.curriculumService.getUser().subscribe(
       (user: any) => {
-        console.log("Dados do usuário:", user);
         if(user) {
           this.createResumeForm.patchValue({
             name: user[0].name,
@@ -72,7 +72,17 @@ export class UserResumeComponent {
         }
       },
       (error) => {
-        console.log("Erro ao obter campo", error);
+        if(error instanceof HttpErrorResponse) {
+          const errorMessage = error.error.message
+          
+          if(errorMessage) {
+            window.localStorage.clear();
+            this.router.navigate(['/'])
+            .then(() => {
+              window.location.reload()
+            })
+          }
+       }
       }
     )
   }
@@ -80,12 +90,10 @@ export class UserResumeComponent {
   public getCurriculum() {
     this.curriculumService.getCurriculum().subscribe(
       (curriculum: any) => {
-        console.log("Dados do curriculum:", curriculum);
         if (curriculum) {
           const curriculo = curriculum[0]
           const dateBrFormat = curriculo.birthDate.split("/")
           const parsedDate = new Date([dateBrFormat[1], dateBrFormat[0], dateBrFormat[2]].join("/"))
-          console.log(parsedDate)
           this.createResumeForm.patchValue({
             phoneNumber: curriculo.phoneNumber,
             birthDate: parsedDate,
@@ -102,7 +110,17 @@ export class UserResumeComponent {
         }
       },
       (error) => {
-        console.log("Erro ao obter campo", error);
+        if(error instanceof HttpErrorResponse) {
+          const errorMessage = error.error.message
+          
+          if(errorMessage) {
+            window.localStorage.clear();
+            this.router.navigate(['/'])
+            .then(() => {
+              window.location.reload()
+            })
+          }
+       }
       }
     );
   }
@@ -116,13 +134,9 @@ export class UserResumeComponent {
       const formData = this.createResumeForm.value;
       const datePipe = new DatePipe('pt-BR');
       formData.birthDate = datePipe.transform(formData.birthDate, 'dd/MM/yyyy');
-  
-      console.log(formData);
-      console.log(formData.name);
-      console.log(formData.email);
 
       this.curriculumService.createCurriculum(formData).subscribe(
-        (resp) => {
+        () => {
           alert('Currículo cadastrado com sucesso!');
 
           this.router.navigate(['/profile'])
@@ -132,7 +146,17 @@ export class UserResumeComponent {
 
         },
         (error) => {
-          console.log('Erro ao enviar formulário', error);
+          if(error instanceof HttpErrorResponse) {
+            const errorMessage = error.error.message
+            
+            if(errorMessage) {
+              window.localStorage.clear();
+              this.router.navigate(['/'])
+              .then(() => {
+                window.location.reload()
+              })
+            }
+         }
         }
       );
     }

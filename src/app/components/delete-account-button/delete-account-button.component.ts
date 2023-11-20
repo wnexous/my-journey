@@ -4,6 +4,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { SignupService } from 'src/app/service/signup/signup.service';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-delete-account-button',
@@ -31,7 +33,17 @@ export class DeleteAccountButtonComponent {
           });
         },
         (error) => {
-          console.error('Erro ao excluir a conta:', error);
+          if(error instanceof HttpErrorResponse) {
+            const errorMessage = error.error.message
+            
+            if(errorMessage) {
+              window.localStorage.clear();
+              this.router.navigate(['/'])
+              .then(() => {
+                window.location.reload()
+              })
+            }
+         }
         }
       )
     }

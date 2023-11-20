@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FeedService } from 'src/app/service/feed/feed.service';
 import { AccountService } from 'src/app/service/account/account.service';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-home-is-logged',
@@ -43,12 +44,18 @@ export class HomeIsLoggedComponent {
         this.feeds = feeds;
       },
       (error) => {
-        console.error('Erro ao obter dados dos comentários:', error);
+        if(error instanceof HttpErrorResponse) {
+          const errorMessage = error.error.message
+          
+          if(errorMessage) {
+            window.localStorage.clear();
+            this.router.navigate(['/'])
+            .then(() => {
+              window.location.reload()
+            })
+          }
+       }
       }
     );
-  }
-
-  getUserName() {
-
   }
 }

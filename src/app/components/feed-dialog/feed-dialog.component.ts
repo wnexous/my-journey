@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { Validators, FormsModule, ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms';
 import { FeedService } from 'src/app/service/feed/feed.service';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-feed-dialog',
   templateUrl: './feed-dialog.component.html',
@@ -56,11 +57,23 @@ export class FeedDialogComponent {
 
       this.feedService.createMessage(message).subscribe(() => {
         alert('Mensagem enviada com sucesso!')
-        
         this.router.navigate(['/home'])
         .then(() => {
           window.location.reload()
         })
+      },
+      (error) => {
+        if(error instanceof HttpErrorResponse) {
+          const errorMessage = error.error.message
+          
+          if(errorMessage) {
+            window.localStorage.clear();
+            this.router.navigate(['/'])
+            .then(() => {
+              window.location.reload()
+            })
+          }
+       }
       })
     }
   }
@@ -73,7 +86,22 @@ export class FeedDialogComponent {
       const feedId = window.localStorage.getItem('feedId')!;
 
       Promise.all([
-        this.feedService.deleteMessages(feedId).subscribe(),
+        this.feedService.deleteMessages(feedId).subscribe(() => {
+
+        },
+      (error) => {
+        if(error instanceof HttpErrorResponse) {
+          const errorMessage = error.error.message
+          
+          if(errorMessage) {
+            window.localStorage.clear();
+            this.router.navigate(['/'])
+            .then(() => {
+              window.location.reload()
+            })
+          }
+       }
+      }),
         this.feedService.createMessage(message).subscribe(() => {
           alert('Mensagem atualizada com sucesso!')
 
@@ -83,6 +111,19 @@ export class FeedDialogComponent {
           .then(() => {
             window.location.reload()
           })
+        },
+        (error) => {
+          if(error instanceof HttpErrorResponse) {
+            const errorMessage = error.error.message
+            
+            if(errorMessage) {
+              window.localStorage.clear();
+              this.router.navigate(['/'])
+              .then(() => {
+                window.location.reload()
+              })
+            }
+         }
         })
       ])
     }

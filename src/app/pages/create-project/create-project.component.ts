@@ -12,6 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { UploadService } from 'src/app/service/project/upload.service';
 import { AccountService } from 'src/app/service/account/account.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-create-project',
@@ -66,9 +68,7 @@ export class CreateProjectComponent {
       const fileRender = new FileReader();
       const file = inputElement.files[0];
       const fileName = file.name;
-  
-      console.log('File Type:', file.type);
-  
+    
       fileRender.readAsDataURL(file);
   
       fileRender.onload = () => {
@@ -110,6 +110,19 @@ export class CreateProjectComponent {
           window.location.reload()
         })
         
+      },
+      (error) => {
+        if(error instanceof HttpErrorResponse) {
+          const errorMessage = error.error.message
+          
+          if(errorMessage) {
+            window.localStorage.clear();
+            this.router.navigate(['/'])
+            .then(() => {
+              window.location.reload()
+            })
+          }
+       }
       });
     }
 
@@ -124,9 +137,37 @@ export class CreateProjectComponent {
       const projectId = this.getProjectId()!;
   
       Promise.all([
-        this.uploadService.deleteFile(projectId).subscribe(),
+        this.uploadService.deleteFile(projectId).subscribe(() => {
+          
+        },
+        (error) => {
+          if(error instanceof HttpErrorResponse) {
+            const errorMessage = error.error.message
+            
+            if(errorMessage) {
+              window.localStorage.clear();
+              this.router.navigate(['/'])
+              .then(() => {
+                window.location.reload()
+              })
+            }
+         }
+        }),
         this.uploadService.updateFile(title, description, this.fileInBase64).subscribe(() => {
           alert('Updated');
+        },
+        (error) => {
+          if(error instanceof HttpErrorResponse) {
+            const errorMessage = error.error.message
+            
+            if(errorMessage) {
+              window.localStorage.clear();
+              this.router.navigate(['/'])
+              .then(() => {
+                window.location.reload()
+              })
+            }
+         }
         })
       ])
 
