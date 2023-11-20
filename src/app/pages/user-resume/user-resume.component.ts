@@ -137,7 +137,7 @@ export class UserResumeComponent {
 
       this.curriculumService.createCurriculum(formData).subscribe(
         () => {
-          alert('Currículo cadastrado com sucesso!');
+          alert('Currículo concluído com sucesso!');
 
           this.router.navigate(['/profile'])
           .then(() => {

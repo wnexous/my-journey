@@ -56,25 +56,35 @@
                 <span class="body-curriculum">{{ curriculum[0].state }}</span>
             </div>
 
-            <div class="curriculum-item">
-                <span class="title-curriculum">Objetivo Profissional:</span>
-                <span class="body-curriculum">{{ curriculum[0].professionalObjective }}</span>
+            <div class="curriculum-text">
+                <div class="curriculum-item">
+                    <span class="title-curriculum">Objetivo Profissional</span>
+                </div>
+                <p class="body-curriculum">{{ curriculum[0].professionalObjective }}</p>
             </div>
 
-            <div class="curriculum-item">
-                <span class="title-curriculum">Experiências:</span>
+            <div class="curriculum-text">
+                <div class="curriculum-item">
+                    <span class="title-curriculum">Experiências</span>
+                </div>
                 <span class="body-curriculum">{{ curriculum[0].professionalExperience }}</span>
             </div>
 
-            <div class="curriculum-item">
-                <span class="title-curriculum">Cursos e Certificações:</span>
+
+            <div class="curriculum-text">
+                <div class="curriculum-item">
+                    <span class="title-curriculum">Cursos e Certificações</span>
+                </div>
                 <span class="body-curriculum">{{ curriculum[0].coursesAndCertifications }}</span>
             </div>
 
-            <div class="curriculum-item">
-                <span class="title-curriculum">Idiomas:</span>
+            <div class="curriculum-text">
+                <div class="curriculum-item">
+                    <span class="title-curriculum">Idiomas</span>
+                </div>
                 <span class="body-curriculum">{{ curriculum[0].languages }}</span>
             </div>
+
         </ng-container>
 
         <ng-template #noCurriculum>

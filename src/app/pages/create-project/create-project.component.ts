@@ -100,7 +100,7 @@ export class CreateProjectComponent {
       const description = this.createProjetForm.get('description')!.value;
 
       this.uploadService.uploadFile(title, description, this.fileInBase64).subscribe(() => {
-        alert('Uploaded');
+        alert('Projeto criado com sucesso!');
 
         window.localStorage.removeItem('projectId')
         window.localStorage.removeItem('image')
