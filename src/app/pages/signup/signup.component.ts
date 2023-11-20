@@ -40,7 +40,7 @@ export class SignupComponent {
       const params = this.signupForm.value;
 
       this.signupService.signupUser(params).subscribe((resp) => {
-        alert('Formulário enviado');
+        alert('Conta criada com sucesso!');
         this.router.navigate(['/signin'])
       });
     } else {

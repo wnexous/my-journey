@@ -41,6 +41,7 @@ import { FeedCardComponent } from './components/feed-card/feed-card.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { ProjectCardComponent } from './components/project-card/project-card.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { DeleteAccountButtonComponent } from './components/delete-account-button/delete-account-button.component';
 
 registerLocaleData(localePT);
 
@@ -59,7 +60,8 @@ registerLocaleData(localePT);
     ProfileComponent, 
     ViewProjectDialogComponent, 
     HomeIsLoggedComponent, 
-    ProjectsComponent, AboutUsComponent, 
+    ProjectsComponent, 
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +84,7 @@ registerLocaleData(localePT);
     FeedDialogComponent,
     FeedCardComponent,
     ProjectCardComponent,
+    DeleteAccountButtonComponent
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-br' }],
   bootstrap: [AppComponent]

@@ -101,15 +101,16 @@ export class CreateProjectComponent {
 
       this.uploadService.uploadFile(title, description, this.fileInBase64).subscribe(() => {
         alert('Uploaded');
+
+        window.localStorage.removeItem('projectId')
+        window.localStorage.removeItem('image')
+  
+        this.router.navigate(['/profile'])
+        .then(() => {
+          window.location.reload()
+        })
+        
       });
-
-      window.localStorage.removeItem('projectId')
-      window.localStorage.removeItem('image')
-
-      this.router.navigate(['/profile'])
-      .then(() => {
-        window.location.reload()
-      })
     }
 
   }
